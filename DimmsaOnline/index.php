@@ -1,3 +1,4 @@
+<?php include "../Controlador/Conexion.php"; ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -278,24 +279,30 @@
               <div class="collapse navbar-collapse" id="basicExampleNav">
       
                 <!-- Links -->
-                <ul class="navbar-nav mr-auto">
+                
+                  <ul class="nav nav-tabs navbar-nav mr-auto" id="myTab" role="tablist">
                   <li class="nav-item active">
-                    <a class="nav-link" href="#">Todas
-                      <span class="sr-only">(current)</span>
-                    </a>
+                    <a class="nav-link active" id="todas-tab" data-toggle="tab" href="#todas" role="tab" aria-controls="todas"
+                      aria-selected="true">Todas</a>
                   </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">Sillas</a>
-                    
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">Comedores</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">Percheros</a>
-                  </li>
-      
-                </ul>
+                   
+                  <?php 
+                      $queryCategoria = "SELECT * FROM CATEGORIA"; 
+                      $rsCategoria = mysqli_query($con, $queryCategoria) or die ("Error de consulta");
+                      $count1=0;         
+                      while ($Categoria = mysqli_fetch_array($rsCategoria)) {
+                        echo "
+                        <li class='nav-item active'>
+                          <a class='nav-link' id='#cat$count1-tab' data-toggle='tab' href='#cat$count1' role='tab' aria-controls='#cat$count1'
+                            aria-selected='false'>$Categoria[0]</a>
+                        </li>
+                        
+                        "; 
+                        $count1 +=1;}
+                  ?>
+                
+                  </ul>
+
                 <!-- Links -->
       
                 <form class="form-inline">
@@ -311,266 +318,131 @@
       
             <!--Section: Products v.3-->
             <section class="text-center mb-4">
-      
-              <!--Grid row-->
-              <div class="row wow fadeIn">
-      
-                <!--Grid column-->
-                <div class="col-lg-4 col-md-6 mb-4">
-      
-                  <!--Card-->
-                  <div class="card">
-      
-                    <!--Card image-->
-                    <div class="view overlay">
-                      <img src="http://mueblesdimmsa.com/wp-content/uploads/2015/02/35Silla-Laguna.jpg"  class="card-img-top"
-                        alt="">
-                      <a>
-                        <div class="mask rgba-white-slight"></div>
-                      </a>
-                    </div>
-                    <!--Card image-->
-      
-                    <!--Card content-->
-                    <div class="card-body text-center">
-                      <!--Category & Title-->
-                      <a href="" class="grey-text">
-                        <h5>SILLA LAGUNA</h5>
-                      </a>
-                      <h5>
-                        <strong>
-                            <span class="badge badge-pill info-color">Sillas y Sillones</span>
-                        </strong>
-                      </h5>
-      
-                      <h4 class="font-weight-bold blue-text">
-                        <strong>Disponible</strong>
-                      </h4>
-      
-                    </div>
-                    <!--Card content-->
-      
+              <div class="tab-content" id="myTabContent">
+                  <div class="tab-pane fade show active" id="todas" role="tabpanel" aria-labelledby="todas-tab">
+                    <div class="row">
+                   <?php $queryProducto = "SELECT * FROM PRODUCTO "; 
+                            $rsProducto = mysqli_query($con, $queryProducto) or die ("Error de consulta");  
+                                while ($Producto = mysqli_fetch_array($rsProducto)) {
+                                echo "
+                                    <div class='col-lg-4 col-md-6 mb-4'>
+                          
+                                      <div class='card'>
+                          
+                                        <div class='view overlay'>
+                                          <img src='../Media/$Producto[1].jpg'  class='card-img-top'
+                                            alt=''>
+                                          <a>
+                                            <div class='mask rgba-white-slight'></div>
+                                          </a>
+                                        </div>
+                                        
+                          
+                                        
+                                        <div class='card-body text-center'>
+                                          
+                                          <a href='' class='grey-text'>
+                                            <h5>$Producto[1]</h5>
+                                          </a>
+                                          <h5>
+                                            <strong>
+                                                <span class='badge badge-pill info-color'>$Producto[6]</span>
+                                            </strong>
+                                          </h5>
+                          
+                                          <h4 class='font-weight-bold blue-text'>
+                                          <button type='button' class='btn btn-sm btn-block'  data-toggle='modal' data-target='#$Producto[1]'><b>Detalles</b></button>
+                                          </h4>
+                          
+                                        </div>
+                                       
+                          
+                                      </div>
+                                      
+                          
+                                    </div>
+
+                                  
+                                  ";
+
+                                  
+
+                                  }
+                                  echo"
+                                  </div>
+                                  ";
+                                
+                      ?>
                   </div>
-                  <!--Card-->
-      
-                </div>
-                <!--Grid column-->
-      
-                <!--Grid column-->
-                <div class="col-lg-4 col-md-6 mb-4">
-      
-                  <!--Card-->
-                  <div class="card">
-      
-                    <!--Card image-->
-                    <div class="view overlay">
-                      <img src="http://mueblesdimmsa.com/wp-content/uploads/2015/02/36Silla-Siena.jpg"  width="100" class="card-img-top"
-                        alt="">
-                      <a>
-                        <div class="mask rgba-white-slight"></div>
-                      </a>
-                    </div>
-                    <!--Card image-->
-      
-                    <!--Card content-->
-                    <div class="card-body text-center">
-                      <!--Category & Title-->
-                      <a href="" class="grey-text">
-                        <h5>SILLA SIENA</h5>
-                      </a>
-                      <h5>
-                        <strong>
-                          <span class="badge badge-pill info-color">Sillas y Sillones</span>
-                      </strong>
-                      </h5>
-      
-                      <h4 class="font-weight-bold blue-text">
-                        <strong>Disponible</strong>
-                      </h4>
-      
-                    </div>
-                    <!--Card content-->
-      
-                  </div>
-                  <!--Card-->
-      
-                </div>
-                <!--Grid column-->
-      
-                <!--Grid column-->
-                <div class="col-lg-4 col-md-6 mb-4">
-      
-                  <!--Card-->
-                  <div class="card">
-      
-                    <!--Card image-->
-                    <div class="view overlay">
-                      <img src="http://mueblesdimmsa.com/wp-content/uploads/2015/02/SILLO%CC%81N-GEORGIA-.jpg"  class="card-img-top"
-                        alt="">
-                      <a>
-                        <div class="mask rgba-white-slight"></div>
-                      </a>
-                    </div>
-                    <!--Card image-->
-      
-                    <!--Card content-->
-                    <div class="card-body text-center">
-                      <!--Category & Title-->
-                      <a href="" class="grey-text">
-                        <h5>SILLÓN GEORGIA</h5>
-                      </a>
-                      <h5>
-                        <strong>
-                          <strong>
-                            <span class="badge badge-pill info-color">Sillas y Sillones</span>
-                        </strong>
-                        </strong>
-                      </h5>
-      
-                      <h4 class="font-weight-bold blue-text">
-                        <strong>Disponible</strong>
-                      </h4>
-      
-                    </div>
-                    <!--Card content-->
-      
-                  </div>
-                  <!--Card-->
-      
-                </div>
-            
-      
+                  <?php $queryCategoria = "SELECT * FROM CATEGORIA"; 
+                      $rsCategoria = mysqli_query($con, $queryCategoria) or die ("Error de consulta"); 
+                      $countCat=0;        
+                      while ($Categoria = mysqli_fetch_array($rsCategoria)) {
+                        echo"<div class='tab-pane fade show' id='cat$countCat' role='tabpanel' aria-labelledby='cat$countCat-tab'>
+                                <div class='row'>
+                        "; 
+                            $queryProducto = "SELECT * FROM PRODUCTO WHERE CATEGORIA ='$Categoria[0]'"; 
+                            $rsProducto = mysqli_query($con, $queryProducto) or die ("Error de consulta");  
+                            $count=0;       
+                              while ($Producto = mysqli_fetch_array($rsProducto)) {
+                                echo "
+                                    <div class='col-lg-4 col-md-6 mb-4'>
+                          
+                                      <div class='card'>
+                          
+                                        <div class='view overlay'>
+                                          <img src='../Media/$Producto[1].jpg'  class='card-img-top'
+                                            alt=''>
+                                          <a>
+                                            <div class='mask rgba-white-slight'></div>
+                                          </a>
+                                        </div>
+                                        
+                          
+                                        
+                                        <div class='card-body text-center'>
+                                          
+                                          <a href='' class='grey-text'>
+                                            <h5>$Producto[1]</h5>
+                                          </a>
+                                          <h5>
+                                            <strong>
+                                                <span class='badge badge-pill info-color'>$Categoria[0]</span>
+                                            </strong>
+                                          </h5>
+                          
+                                          <h4 class='font-weight-bold blue-text'>
+                                          <button type='button' class='btn btn-sm btn-block'  data-toggle='modal' data-target='#$Producto[1]'><b>Detalles</b></button>
+                                          </h4>
+                          
+                                        </div>
+                                       
+                          
+                                      </div>
+                                      
+                          
+                                    </div>
+
+                                  
+                                  ";
+
+                                  $count += 1;
+
+                                  }
+                                  echo"
+                                  </div>
+                                  </div>";
+                                  $countCat +=1;
+                                }
+                      ?>
+                         
               </div>
+
+              <!--Grid row-->
+              
               <!--Grid row-->
       
-              <!--Grid row-->
-              <div class="row wow fadeIn">
-      
-                <div class="col-lg-4 col-md-6 mb-4">
-      
-                  <!--Card-->
-                  <div class="card">
-      
-                    <!--Card image-->
-                    <div class="view overlay">
-                      <img src="http://mueblesdimmsa.com/wp-content/uploads/2015/02/35Silla-Laguna.jpg"  class="card-img-top"
-                        alt="">
-                      <a>
-                        <div class="mask rgba-white-slight"></div>
-                      </a>
-                    </div>
-                    <!--Card image-->
-      
-                    <!--Card content-->
-                    <div class="card-body text-center">
-                      <!--Category & Title-->
-                      <a href="" class="grey-text">
-                        <h5>SILLA LAGUNA</h5>
-                      </a>
-                      <h5>
-                        <strong>
-                            <span class="badge badge-pill info-color">Sillas y Sillones</span>
-                        </strong>
-                      </h5>
-      
-                      <h4 class="font-weight-bold blue-text">
-                        <strong>Disponible</strong>
-                      </h4>
-      
-                    </div>
-                    <!--Card content-->
-      
-                  </div>
-                  <!--Card-->
-      
-                </div>
-                <!--Grid column-->
-      
-                <!--Grid column-->
-                <div class="col-lg-4 col-md-6 mb-4">
-      
-                  <!--Card-->
-                  <div class="card">
-      
-                    <!--Card image-->
-                    <div class="view overlay">
-                      <img src="http://mueblesdimmsa.com/wp-content/uploads/2015/02/36Silla-Siena.jpg"  width="100" class="card-img-top"
-                        alt="">
-                      <a>
-                        <div class="mask rgba-white-slight"></div>
-                      </a>
-                    </div>
-                    <!--Card image-->
-      
-                    <!--Card content-->
-                    <div class="card-body text-center">
-                      <!--Category & Title-->
-                      <a href="" class="grey-text">
-                        <h5>SILLA SIENA</h5>
-                      </a>
-                      <h5>
-                        <strong>
-                          <span class="badge badge-pill info-color">Sillas y Sillones</span>
-                      </strong>
-                      </h5>
-      
-                      <h4 class="font-weight-bold blue-text">
-                        <strong>Disponible</strong>
-                      </h4>
-      
-                    </div>
-                    <!--Card content-->
-      
-                  </div>
-                  <!--Card-->
-      
-                </div>
-                <!--Grid column-->
-      
-                <!--Grid column-->
-                <div class="col-lg-4 col-md-6 mb-4">
-      
-                  <!--Card-->
-                  <div class="card">
-      
-                    <!--Card image-->
-                    <div class="view overlay">
-                      <img src="http://mueblesdimmsa.com/wp-content/uploads/2015/02/SILLO%CC%81N-GEORGIA-.jpg"  class="card-img-top"
-                        alt="">
-                      <a>
-                        <div class="mask rgba-white-slight"></div>
-                      </a>
-                    </div>
-                    <!--Card image-->
-      
-                    <!--Card content-->
-                    <div class="card-body text-center">
-                      <!--Category & Title-->
-                      <a href="" class="grey-text">
-                        <h5>SILLÓN GEORGIA</h5>
-                      </a>
-                      <h5>
-                        <strong>
-                          <strong>
-                            <span class="badge badge-pill info-color">Sillas y Sillones</span>
-                        </strong>
-                        </strong>
-                      </h5>
-      
-                      <h4 class="font-weight-bold blue-text">
-                        <strong>Disponible</strong>
-                      </h4>
-      
-                    </div>
-                    <!--Card content-->
-      
-                  </div>
-                  <!--Card-->
-      
-                </div>
-      
-              </div>
-              <!--Grid row-->
+             
       
             </section>
             <!--Section: Products v.3-->
@@ -615,7 +487,75 @@
             </nav>
       
           </div>
+
+          
         </section>
+
+      <?php  
+  $queryDetalle = "SELECT * FROM PRODUCTO"; 
+  $rsDetalle = mysqli_query($con, $queryDetalle) or die ("Error de consulta");         
+    while ($Detalle = mysqli_fetch_array($rsDetalle)) {
+echo"
+<div class='container-fluid'>
+    <!-- The Modal -->
+    <div class='modal fade' id='$Detalle[1]'>
+        <div class='modal-dialog  modal-lg'>
+            <div class='modal-content'>
+
+                <!-- Modal Header -->
+                <div class='modal-header'>
+                    <div class='container-fluid'>
+                        <div class='row'>
+                            <div class='col-12'>
+                                <div class='row align-items-center'>
+                                    <div class='col-11'>
+                                        <h4 class='modal-title'>$Detalle[1]</h4>
+                                    </div>
+                                    <div class='col-1'>
+                                        <button type='button' class='close' data-dismiss='modal'>&times;</button>
+                                    </div>
+                                </div>
+                                <br>
+                                <div class='col-12'>
+                                    <div class='row align-items-start'>
+                                        <div class='col-12'>
+                                            <img class='img-responsive center-block img-thumbnail' src='../Media/$Detalle[1].jpg' style='width: 950px; height: 700px;'>
+                                        </div>
+                                        <div class='col-12'>
+                                            <div class='row align-items-start'>
+                                                <div class='col-3'>
+                                                    <h5>Referencia</h5>
+                                                    <img class='img-responsive center-block img-thumbnail' src='../Vista/Img/$Detalle[2].png' style='width: 250px; height: 180px;'>
+                                                </div>
+                                                <div class='col-3'>
+                                                    <h5>Materiales</h5>
+                                                    <p>"; echo nl2br($Detalle[3]); echo"
+                                                    </p>
+                                                </div>
+                                                <div class='col-3'>
+                                                    <h5>Colores</h5>
+                                                    <p>"; echo nl2br($Detalle[4]); echo"
+                                                    </p>
+                                                </div>
+                                                <div class='col-3'>
+                                                    <h5> Medidas</h5>
+                                                    <p>"; echo nl2br($Detalle[5]); echo"
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<div> ";}
+  ?>
+
       <hr class="my-5">
 
       <!--Section: Main features & Quick Start-->

@@ -57,40 +57,41 @@
                     <nav class="col-sm-2 col-3" id="myScrollspy" style="position: fixed;">
                         <ul class="nav nav-pills flex-column">
                             <?php 
-              $queryCategoria = "SELECT * FROM CATEGORIA"; 
-              $rsCategoria = mysqli_query($con, $queryCategoria) or die ("Error de consulta");         
-              while ($Categoria = mysqli_fetch_array($rsCategoria)) {
-                echo "
-                <li class='nav-item' style='background-color: #cf6f19; border-radius: 3px;'>
-                  <a style='color: white;' class='nav-link' href='#$Categoria[0]'><b> $Categoria[0]</b></a>
-                </li>
-                <br>"; }?>
-                        </ul>
+                                $queryCategoria = "SELECT * FROM CATEGORIA"; 
+                                $rsCategoria = mysqli_query($con, $queryCategoria) or die ("Error de consulta");         
+                                while ($Categoria = mysqli_fetch_array($rsCategoria)) {
+                                  echo "
+                                  <li class='nav-item' style='background-color: #cf6f19; border-radius: 3px;'>
+                                    <a style='color: white;' class='nav-link' href='#$Categoria[0]'><b> $Categoria[0]</b></a>
+                                  </li>
+                                  <br>"; }
+                            ?>
+                          </ul>
                     </nav>
-                    <div class=" offset-2 col-sm-10 col-9 ">
+                      <div class=" offset-2 col-sm-10 col-9 ">
 
                     <?php $queryCategoria = "SELECT * FROM CATEGORIA"; 
-              $rsCategoria = mysqli_query($con, $queryCategoria) or die ("Error de consulta");         
-              while ($Categoria = mysqli_fetch_array($rsCategoria)) {
-                echo"
-            <div id='$Categoria[0]' class='bg-basic'>
-              <h1 style='color: white;'>$Categoria[0]</h1>
-              <div class='row'>"; 
-              $queryProducto = "SELECT * FROM PRODUCTO WHERE CATEGORIA ='$Categoria[0]'"; 
-                  $rsProducto = mysqli_query($con, $queryProducto) or die ("Error de consulta");         
-                    while ($Producto = mysqli_fetch_array($rsProducto)) {
-                      echo "
-                      <div style='background-color: white; margin: 0 auto; border-radius: 5px; margin-top: 7px; margin-bottom: 7px; box-shadow: 8px 8px 4px #000000' class=' col-lg-5'>
-                      <br>
-                      <h5>$Producto[1]</h5>
-                      <img class='img-responsive center-block img-thumbnail'  src='../Media/$Producto[1].jpg' style='width: 320px; height: 280px;'>
-                      <br> 
-                      <button type='button' class='btn btn-sm btn-block' style='background-color: #cf6f19; color: white;' data-toggle='modal' data-target='#$Producto[1]'><b>Detalles</b></button>
-                      <br>     
-                      </div>";}
-                      echo"
-                      </div>
-                      </div>";
+                      $rsCategoria = mysqli_query($con, $queryCategoria) or die ("Error de consulta");         
+                      while ($Categoria = mysqli_fetch_array($rsCategoria)) {
+                        echo"
+                      <div id='$Categoria[0]' class='bg-basic'>
+                      <h1 style='color: white;'>$Categoria[0]</h1>
+                      <div class='row'>"; 
+                      $queryProducto = "SELECT * FROM PRODUCTO WHERE CATEGORIA ='$Categoria[0]'"; 
+                          $rsProducto = mysqli_query($con, $queryProducto) or die ("Error de consulta");         
+                            while ($Producto = mysqli_fetch_array($rsProducto)) {
+                              echo "
+                              <div style='background-color: white; margin: 0 auto; border-radius: 5px; margin-top: 7px; margin-bottom: 7px; box-shadow: 8px 8px 4px #000000' class=' col-lg-5'>
+                              <br>
+                              <h5>$Producto[1]</h5>
+                              <img class='img-responsive center-block img-thumbnail'  src='../Media/$Producto[1].jpg' style='width: 320px; height: 280px;'>
+                              <br> 
+                              <button type='button' class='btn btn-sm btn-block' style='background-color: #cf6f19; color: white;' data-toggle='modal' data-target='#$Producto[1]'><b>Detalles</b></button>
+                              <br>     
+                              </div>";}
+                              echo"
+                              </div>
+                              </div>";
                       }?>
 
                             </div>
