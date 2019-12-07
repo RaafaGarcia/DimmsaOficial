@@ -47,6 +47,7 @@
     @media (min-width: 800px) and (max-width: 850px) {
       .navbar:not(.top-nav-collapse) {
         background: #929FBA !important;
+        
       }
     }
 
@@ -58,7 +59,7 @@
   <header>
     <section id="home">
     <!-- Navbar -->
-    <nav class="navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar   ">
+    <nav class="navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar   " >
       <div class="container">
 
         <!-- Brand -->
@@ -262,58 +263,59 @@
       <section id="productos">
         <br>
         <br>
-          <div class="container mt-5" >
-      
-            <nav class="navbar navbar-expand-lg navbar-dark mdb-color lighten-3 mt-3 mb-5" style="border-radius:5px">
+          <div class="container " >
+            <div style="padding-top:4%" class="sticky-top">
+              <nav class="navbar navbar-expand-lg navbar-dark mdb-color sticky-top mb-5 pt-3 " style="border-radius:5px;">
 
-              <!-- Navbar brand -->
-              <span class="navbar-brand">Categorías:</span>
-      
-              <!-- Collapse button -->
-              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav"
-                aria-controls="basicExampleNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-              </button>
-      
-              <!-- Collapsible content -->
-              <div class="collapse navbar-collapse" id="basicExampleNav">
-      
-                <!-- Links -->
-                
-                  <ul class="nav nav-tabs navbar-nav mr-auto" id="myTab" role="tablist">
-                  <li class="nav-item active">
-                    <a class="nav-link active" id="todas-tab" data-toggle="tab" href="#todas" role="tab" aria-controls="todas"
-                      aria-selected="true">Todas</a>
-                  </li>
-                   
-                  <?php 
-                      $queryCategoria = "SELECT * FROM CATEGORIA"; 
-                      $rsCategoria = mysqli_query($con, $queryCategoria) or die ("Error de consulta");
-                      $count1=0;         
-                      while ($Categoria = mysqli_fetch_array($rsCategoria)) {
-                        echo "
-                        <li class='nav-item active'>
-                          <a class='nav-link' id='#cat$count1-tab' data-toggle='tab' href='#cat$count1' role='tab' aria-controls='#cat$count1'
-                            aria-selected='false'>$Categoria[0]</a>
-                        </li>
-                        
-                        "; 
-                        $count1 +=1;}
-                  ?>
-                
-                  </ul>
+                <!-- Navbar brand -->
+                <span class="navbar-brand">Categorías:</span>
+        
+                <!-- Collapse button -->
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav"
+                  aria-controls="basicExampleNav" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+                </button>
+        
+                <!-- Collapsible content -->
+                <div class="collapse navbar-collapse" id="basicExampleNav">
+        
+                  <!-- Links -->
+                  
+                    <ul class="nav nav-tabs navbar-nav mr-auto" id="myTab" role="tablist">
+                    <li class="nav-item active">
+                      <a class="nav-link active" id="todas-tab" data-toggle="tab" href="#todas" role="tab" aria-controls="todas"
+                        aria-selected="true">Todos</a>
+                    </li>
+                    
+                    <?php 
+                        $queryCategoria = "SELECT * FROM CATEGORIA"; 
+                        $rsCategoria = mysqli_query($con, $queryCategoria) or die ("Error de consulta");
+                        $count1=0;         
+                        while ($Categoria = mysqli_fetch_array($rsCategoria)) {
+                          echo "
+                          <li class='nav-item active'>
+                            <a class='nav-link' id='#cat$count1-tab' data-toggle='tab' href='#cat$count1' role='tab' aria-controls='#cat$count1'
+                              aria-selected='false'>$Categoria[0]</a>
+                          </li>
+                          
+                          "; 
+                          $count1 +=1;}
+                    ?>
+                  
+                    </ul>
 
-                <!-- Links -->
-      
-                <form class="form-inline">
-                  <div class="md-form my-0">
-                    <input class="form-control mr-sm-2" type="text" placeholder="Buscar" aria-label="Buscar">
-                  </div>
-                </form>
-              </div>
-              <!-- Collapsible content -->
-      
-            </nav>
+                  <!-- Links -->
+        
+                  <form class="form-inline">
+                    <div class="md-form my-0">
+                      <input class="form-control mr-sm-2" type="text" placeholder="Buscar" aria-label="Buscar">
+                    </div>
+                  </form>
+                </div>
+                <!-- Collapsible content -->
+        
+              </nav>
+            </div>
             <!--/.Navbar-->
       
             <!--Section: Products v.3-->
@@ -332,7 +334,7 @@
                                         <div class='view overlay'>
                                           <img src='../Media/$Producto[1].jpg'  class='card-img-top'
                                             alt=''>
-                                          <a>
+                                          <a href='./producto?ref=$Producto[0]'>
                                             <div class='mask rgba-white-slight'></div>
                                           </a>
                                         </div>
@@ -346,13 +348,13 @@
                                           </a>
                                           <h5>
                                             <strong>
-                                                <span class='badge badge-pill info-color'>$Producto[6]</span>
+                                                <span class='badge p-2 badge-pill mdb-color'>$Producto[6]</span>
                                             </strong>
                                           </h5>
                           
-                                          <h4 class='font-weight-bold blue-text'>
-                                          <button type='button' class='btn btn-sm btn-block'  data-toggle='modal' data-target='#$Producto[1]'><b>Detalles</b></button>
-                                          </h4>
+                                         <a href='./producto?ref=$Producto[0]'>
+                                          <button type='button' class='btn btn-sm btn-block peach-gradient '  data-toggle='modal' data-target='#$Producto[1]'><b class='h6'>Ver Producto</b></button>
+                                          </a>
                           
                                         </div>
                                        
@@ -391,9 +393,11 @@
                                       <div class='card'>
                           
                                         <div class='view overlay'>
+                                       
                                           <img src='../Media/$Producto[1].jpg'  class='card-img-top'
                                             alt=''>
-                                          <a>
+                                        
+                                          <a href='./producto?ref=$Producto[0]'>
                                             <div class='mask rgba-white-slight'></div>
                                           </a>
                                         </div>
@@ -407,13 +411,13 @@
                                           </a>
                                           <h5>
                                             <strong>
-                                                <span class='badge badge-pill info-color'>$Categoria[0]</span>
+                                            <span class='badge p-2 badge-pill mdb-color'>$Producto[6]</span>
                                             </strong>
                                           </h5>
                           
-                                          <h4 class='font-weight-bold blue-text'>
-                                          <button type='button' class='btn btn-sm btn-block'  data-toggle='modal' data-target='#$Producto[1]'><b>Detalles</b></button>
-                                          </h4>
+                                          <a href='./producto?ref=$Producto[0]'>
+                                          <button type='button' class='btn btn-sm btn-block peach-gradient '  data-toggle='modal' data-target='#$Producto[1]'><b class='h6'>Ver Producto</b></button>
+                                          </a>
                           
                                         </div>
                                        
@@ -491,70 +495,7 @@
           
         </section>
 
-      <?php  
-  $queryDetalle = "SELECT * FROM PRODUCTO"; 
-  $rsDetalle = mysqli_query($con, $queryDetalle) or die ("Error de consulta");         
-    while ($Detalle = mysqli_fetch_array($rsDetalle)) {
-echo"
-<div class='container-fluid'>
-    <!-- The Modal -->
-    <div class='modal fade' id='$Detalle[1]'>
-        <div class='modal-dialog  modal-lg'>
-            <div class='modal-content'>
-
-                <!-- Modal Header -->
-                <div class='modal-header'>
-                    <div class='container-fluid'>
-                        <div class='row'>
-                            <div class='col-12'>
-                                <div class='row align-items-center'>
-                                    <div class='col-11'>
-                                        <h4 class='modal-title'>$Detalle[1]</h4>
-                                    </div>
-                                    <div class='col-1'>
-                                        <button type='button' class='close' data-dismiss='modal'>&times;</button>
-                                    </div>
-                                </div>
-                                <br>
-                                <div class='col-12'>
-                                    <div class='row align-items-start'>
-                                        <div class='col-12'>
-                                            <img class='img-responsive center-block img-thumbnail' src='../Media/$Detalle[1].jpg' style='width: 950px; height: 700px;'>
-                                        </div>
-                                        <div class='col-12'>
-                                            <div class='row align-items-start'>
-                                                <div class='col-3'>
-                                                    <h5>Referencia</h5>
-                                                    <img class='img-responsive center-block img-thumbnail' src='../Vista/Img/$Detalle[2].png' style='width: 250px; height: 180px;'>
-                                                </div>
-                                                <div class='col-3'>
-                                                    <h5>Materiales</h5>
-                                                    <p>"; echo nl2br($Detalle[3]); echo"
-                                                    </p>
-                                                </div>
-                                                <div class='col-3'>
-                                                    <h5>Colores</h5>
-                                                    <p>"; echo nl2br($Detalle[4]); echo"
-                                                    </p>
-                                                </div>
-                                                <div class='col-3'>
-                                                    <h5> Medidas</h5>
-                                                    <p>"; echo nl2br($Detalle[5]); echo"
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-<div> ";}
-  ?>
+      
 
       <hr class="my-5">
 
