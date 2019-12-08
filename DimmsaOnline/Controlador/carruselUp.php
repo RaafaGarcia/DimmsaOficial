@@ -17,7 +17,7 @@ if (isset($_POST['opc']) && $_POST['opc'] == '1'){
         
         $sql = "INSERT INTO CARRUSEL values(".$id.",'". $nombreArchivo ."',1) ON DUPLICATE KEY UPDATE IMG_REFERENCIA ='". $nombreArchivo ."', OPC = 1;";
         if(mysqli_query($con, $sql)){
-          header("Location: ../Vista/Inventario.php");
+          header("Location: ../inventario.php");
         }
       }else{   
 
@@ -27,7 +27,7 @@ if (isset($_POST['opc']) && $_POST['opc'] == '1'){
 
       $sql = "INSERT INTO CARRUSEL values(".$id.",'". $nombreArchivo ."',1) ON DUPLICATE KEY UPDATE IMG_REFERENCIA ='". $nombreArchivo ."', OPC = 1;";
     	if(mysqli_query($con, $sql)){
-        header("Location: ../Vista/Inventario.php");
+        header("Location: ../inventario.php");
 		  }
 
     

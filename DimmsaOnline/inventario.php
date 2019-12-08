@@ -1,3 +1,4 @@
+<?php include "../Controlador/Conexion.php"; ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -15,6 +16,9 @@
   <link href="css/mdb.min.css" rel="stylesheet">
   <!-- Your custom styles (optional) -->
   <link href="css/style.min.css" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+<script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
 </head>
 
 <body class="grey lighten-3">
@@ -102,14 +106,63 @@
                       <table class="table table-hover ">
                           <thead class="orange white-text">
                             <tr>
-                              <th scope="col">Orden</th>
-                              <th scope="col">Imagen</th>
-                              <th scope="col">Ruta</th>
-                              <th scope="col">Acción</th>
+                              <th scope=" text-center">Orden</th>
+                              <th scope=" text-center">Imagen</th>
+                              <th scope=" text-center">Ruta</th>
+                              <th scope=" text-center">Acción</th>
                             </tr>
                           </thead>
                           <tbody>
-                            <tr>
+                          <?php $queryCarrusel = "SELECT * FROM CARRUSEL"; 
+                          $rsCarrusel = mysqli_query($con, $queryCarrusel) or die ("Error de consulta");         
+                            while ($Carrusel = mysqli_fetch_array($rsCarrusel)) {
+                              echo "
+                              <tr>
+                              <form id='uploadimage' action='./Controlador/carruselUp.php' method='post' enctype='multipart/form-data'>
+                                <td scope='row'>$Carrusel[0]</td>
+                                <td style='max-width: 120px;min-width: 220px;'>
+                                <img id='imgSalida' src='Media/Carrusel/$Carrusel[1]' width='200' height='105'>
+                              </td>
+                              <td style='min-width: 200px;'>
+                              <a>".$Carrusel[1]."</a>
+                              <div class='custom-file'>
+                                  <input type='file' class='custom-file-input' id='customFileLang' lang='es' name='file-input' required='yes'>
+                                  <label class='custom-file-label' for='customFileLang'>Seleccionar</label>
+                              </div>
+                              </td>
+                                <td  style='width: 140px;'>";
+                                if($Carrusel[2] == 1){ ?>
+                                <a>&nbsp; </a>
+                                <style>
+                                  .toggle.ios, .toggle-on.ios, .toggle-off.ios { width:200px }
+                                  .toggle.ios .toggle-handle { border-radius: 20px; }
+                                </style>
+                                <input type="checkbox" value='$Carrusel[2]'  name='opc' id='check' data-toggle="toggle" data-style="ios"  data-size="small" data-on='<i class="fa fa-eye-slash fa-lg"></i> Ocultar' data-off='<i class="fa fa-eye fa-lg"></i> Mostrar' data-onstyle="info" data-offstyle="default" checked>
+                                <?php }else{ ?>
+                                  <input type="checkbox" value='$Carrusel[2]'  name='opc' id='check' data-toggle="toggle" data-style="ios"  data-size="small" data-on='<i class="fa fa-eye-slash fa-lg"></i> Ocultar' data-off='<i class="fa fa-eye fa-lg"></i> Mostrar' data-onstyle="info" data-offstyle="default" >
+                                  
+                              <?php }
+                               echo"
+                                 <input type='hidden' name='Carrusel' id='Carrusel' value='".$Carrusel[0]."'>";?>
+                                 <!-- <input type='submit'  value='Actualizar' class='btn btn-outline-warning btn-block'> -->
+                              <button  type="submit" value='Actualizar' class="btn btn-deep-orange btn-sm btn-block mb-1"><i class="fas fa-edit fa-lg mr-1 white-text"></i> Editar</button>
+
+                              <!-- <button  type="submit" class="btn btn-red btn-sm btn-block mb-1"><i class="fas fa-trash fa-lg mr-1 white-text"></i> Borrar</button> -->
+                                
+                                <?php 
+                                echo" 
+                                </form>
+                                  <form id='uploadimage' action='./Controlador/carruselDown.php' method='post' enctype='multipart/form-data'>
+                                  <input type='hidden' name='Carrusel' value='".$Carrusel[0]."'>
+                                  <input type='hidden' name='Borrar' value='".$Carrusel[1]."'>";?>
+                                  <!-- <input type='submit'  value='Borrar' class='btn btn-outline-danger btn-block'> -->
+                                  <button  type="submit" value='Borrar' class="btn btn-red btn-sm btn-block mb-1"><i class="fas fa-trash fa-lg mr-1 white-text"></i> Borrar</button>
+                                <?php 
+                                echo"
+                                  </form>
+                                </td>
+                              </tr> "; }?>
+                            <!-- <tr>
                               <th scope="row">1</th>
                               <td style="max-width: 120px;min-width: 220px;">
                                 <img id='imgSalida' src="http://mueblesdimmsa.com/wp-content/uploads/2013/10/7Mesas-de-Centro-Odessa.jpg" width='200' height='105'>
@@ -126,7 +179,7 @@
                                 <button  type="button" class="btn btn-red btn-sm btn-block mb-1"><i class="fas fa-trash fa-lg mr-1 white-text"></i> Borrar</button>
                               </td>
                             </tr>
-                           
+                            -->
                           </tbody>
                         </table>
                         

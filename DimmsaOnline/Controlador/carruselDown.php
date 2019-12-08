@@ -9,7 +9,7 @@ $nombreArchivo = "no-image.jpg";
     $sql = "INSERT INTO CARRUSEL values(".$id.",'". $nombreArchivo ."',0) ON DUPLICATE KEY UPDATE IMG_REFERENCIA ='". $nombreArchivo ."', OPC = 0;";
     	if(mysqli_query($con, $sql)){
         unlink("../Media/Carrusel/" . $img);
-        header("Location: ../Vista/Inventario.php");
+        header("Location: ../inventario.php");
 		}else{
     		echo "Error";
 		}
