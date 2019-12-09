@@ -63,7 +63,7 @@
       <div class="container">
 
         <!-- Brand -->
-        <a class="navbar-brand" href="#" >
+        <a class="navbar-brand" href="#home" >
           <img src="img/content/LogoAlta .jpg" alt="" width="130">
         </a>
 

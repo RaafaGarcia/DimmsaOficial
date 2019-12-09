@@ -29,7 +29,7 @@
       <div class="container">
 
         <!-- Brand -->
-        <a class="navbar-brand" href="#" >
+        <a class="navbar-brand" href="./#home" >
           <img src="img/content/LogoAlta .jpg" alt="" width="130">
         </a>
 
@@ -45,20 +45,20 @@
           <!-- Left -->
           <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-              <a class="nav-link" href="#home">Inicio
+              <a class="nav-link" href="./#home">Inicio
                 <span class="sr-only">(current)</span>
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#empresa" >Empresa</a>
+              <a class="nav-link" href="./#empresa" >Empresa</a>
               <!-- target="_blank" -->
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#productos" >
+              <a class="nav-link" href="./#productos" >
                 Productos</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link"  href="#contacto" >Contacto</a>
+              <a class="nav-link"  href="./#contacto" >Contacto</a>
             </li>
           </ul>
 

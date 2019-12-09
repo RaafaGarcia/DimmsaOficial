@@ -17,6 +17,7 @@
   <!-- Your custom styles (optional) -->
   <link href="css/style.min.css" rel="stylesheet">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  
   <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
 <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
 </head>
@@ -28,7 +29,7 @@
       <div class="container">
 
         <!-- Brand -->
-        <a class="navbar-brand" href="#" >
+        <a class="navbar-brand" href="./#home" >
           <img src="img/content/LogoAlta .jpg" alt="" width="130">
         </a>
 
@@ -44,20 +45,20 @@
           <!-- Left -->
           <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-              <a class="nav-link" href="./index.html#home">Inicio
+              <a class="nav-link" href="./#home">Inicio
                 <span class="sr-only">(current)</span>
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="./index.html#empresa" >Empresa</a>
+              <a class="nav-link" href="./#empresa" >Empresa</a>
               <!-- target="_blank" -->
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="./index.html#productos" >
+              <a class="nav-link" href="./#productos" >
                 Productos</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link"  href="./index.html#contacto" >Contacto</a>
+              <a class="nav-link"  href="./#contacto" >Contacto</a>
             </li>
           </ul>
 
@@ -199,23 +200,31 @@
                                 </tr>
                               </thead>
                               <tbody>
-                                <tr>
-                                  <th scope="row">1</th>
-                                  <td >
-                                     Sillas y Sillones
-                                  </td>
-                                  <td style="width: 145px;">
-                                    <button  type="button" class="btn btn-red btn-sm btn-block mb-1"><i class="fas fa-trash fa-lg mr-1 white-text"></i> Borrar</button>
-                                  </td>
-                                </tr>
-                               
+                                
+                                <?php $queryCategoria = "SELECT * FROM CATEGORIA"; 
+                                $rsCategoria = mysqli_query($con, $queryCategoria) or die ("Error de consulta");
+                                $count=1;    
+                                  while ($Categoria = mysqli_fetch_array($rsCategoria)) {
+                                    echo"
+                                    <tr>
+                                      <td>$count</td>
+                                      <td>".$Categoria[0]."</td>
+                                      <td>
+                                      <form action='./Controlador/CategoriaDown.php' method='post'>
+                                        <input type='hidden' name='Eliminar' value='".$Categoria[0]."'>
+                                        <button type='submit'  value='Borrar' class='btn btn-red btn-sm btn-block mb-1'><i class='fas fa-trash fa-lg mr-1 white-text'></i></button>
+                                      </form>
+                                      </td>
+                                    </tr>
+                                  "; $count+=1;}?>
+ 
                               </tbody>
                             </table>
                           </div>
                       </div>
 
                       <div class="col-md-4">
-                          <form class="text-center border border-light p-5" action="#!">
+                          <form class="text-center border border-light p-5" action='./Controlador/CategoriaUp.php' method='post'>
 
                               <p class="h4 mb-4">Nueva categoria</p>
                           
@@ -223,13 +232,17 @@
                           
                           
                               <!-- Name -->
+                              <form action='./Controlador/CategoriaUp.php' method='post'>
+      
+        
+        
                               <div class="md-form">
-                                  <input type="text" id="form1" class="form-control" required>
+                                  <input type="text" id="form1" name="Nombre" class="form-control" required>
                                   <label for="form1">Nombre</label>
                               </div>
                           
                             
-                              <button class="btn btn-success btn-block" type="submit">Agregar</button>
+                              <button class="btn btn-success btn-block" type="submit" value="Agregar">Agregar</button>
                           
                           
                           </form>
@@ -322,10 +335,15 @@
                                   <div class="" style="text-align:left">
                                       <label for="" style="text-align:left">Categoria</label>
                                       <select class="browser-default custom-select">
-                                          <option selected>Open this select menu</option>
-                                          <option value="1">One</option>
-                                          <option value="2">Two</option>
-                                          <option value="3">Three</option>
+                                          <option selected value="">Selecciona una categoria</option>
+                                          <?php $queryCategoria = "SELECT * FROM CATEGORIA"; 
+                                          $rsCategoria = mysqli_query($con, $queryCategoria) or die ("Error de consulta");
+                                              
+                                            while ($Categoria = mysqli_fetch_array($rsCategoria)) {
+                                              echo"
+                                              <option value='$Categoria[0]'>$Categoria[0]</option>
+                                               ";
+                                               }?>
                                         </select>
                                   </div>
                                   <br>
