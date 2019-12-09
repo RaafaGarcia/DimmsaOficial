@@ -127,8 +127,19 @@
       <div class="carousel-inner" role="listbox">
 
         <!--First slide-->
-        <div class="carousel-item active">
-          <div class="view" style="background-image: url('img/content/comedorLayla.PNG'); background-repeat: no-repeat; background-size: cover;">
+        <?php 
+          $queryCategoria = "SELECT * FROM CARRUSEL"; 
+          $rsCategoria = mysqli_query($con, $queryCategoria) or die ("Error de consulta");
+                
+          while ($Categoria = mysqli_fetch_array($rsCategoria)) {
+            ?>
+             <div class="carousel-item active">
+            <?php
+            echo "
+            <div class'view' styl'=background-image: url('Media/Carrusel/$Carrusel[1]'); background-repeat: no-repeat; background-size: cover;'>
+            "; 
+      ?>
+       
 
             <!-- Mask & flexbox options-->
             <div class="mask rgba-black-light d-flex justify-content-end align-items-end ">
@@ -142,6 +153,7 @@
 
           </div>
         </div>
+          <?php }?>
         <!--/First slide-->
 
         <!--Second slide-->
