@@ -107,20 +107,22 @@
                       <table class="table table-hover ">
                           <thead class="orange white-text">
                             <tr>
-                              <th scope=" text-center">Orden</th>
+                              
                               <th scope=" text-center">Imagen</th>
                               <th scope=" text-center">Ruta</th>
+                              <th scope=" text-center">Prioridad</th>
                               <th scope=" text-center">Acción</th>
                             </tr>
                           </thead>
                           <tbody>
-                          <?php $queryCarrusel = "SELECT * FROM CARRUSEL"; 
-                          $rsCarrusel = mysqli_query($con, $queryCarrusel) or die ("Error de consulta");         
+                          <?php $queryCarrusel = "SELECT * FROM CARRUSEL order by ordenar asc"; 
+                          $rsCarrusel = mysqli_query($con, $queryCarrusel) or die ("Error de consulta"); 
+                          $countnew =1;        
                             while ($Carrusel = mysqli_fetch_array($rsCarrusel)) {
                               echo "
                               <tr>
                               <form id='uploadimage' action='./Controlador/carruselUp.php' method='post' enctype='multipart/form-data'>
-                                <td scope='row'>$Carrusel[0]</td>
+                               
                                 <td style='max-width: 120px;min-width: 220px;'>
                                 <img id='imgSalida' src='Media/Carrusel/$Carrusel[1]' width='200' height='105'>
                               </td>
@@ -131,19 +133,30 @@
                                   <label class='custom-file-label' for='customFileLang'>Seleccionar</label>
                               </div>
                               </td>
+                              <td><input type='number'  style='width: 100px' class='form-control' name='newOrdenar' value='$Carrusel[2]'>
+                              <input type='hidden'  name='ordenar' value='$Carrusel[2]'>
+                              </td>
                                 <td  style='width: 140px;'>";
-                                if($Carrusel[2] == 1){ ?>
+                                if($Carrusel[3] == 0){ ?>
                                 <a>&nbsp; </a>
                                 <style>
                                   .toggle.ios, .toggle-on.ios, .toggle-off.ios { width:200px }
                                   .toggle.ios .toggle-handle { border-radius: 20px; }
                                 </style>
-                                <input type="checkbox" value='$Carrusel[2]'  name='opc' id='check' data-toggle="toggle" data-style="ios"  data-size="small" data-on='<i class="fa fa-eye-slash fa-lg"></i> Ocultar' data-off='<i class="fa fa-eye fa-lg"></i> Mostrar' data-onstyle="info" data-offstyle="default" checked>
-                                <?php }else{ ?>
-                                  <input type="checkbox" value='$Carrusel[2]'  name='opc' id='check' data-toggle="toggle" data-style="ios"  data-size="small" data-on='<i class="fa fa-eye-slash fa-lg"></i> Ocultar' data-off='<i class="fa fa-eye fa-lg"></i> Mostrar' data-onstyle="info" data-offstyle="default" >
                                   
-                              <?php }
+                                <input type="checkbox" value="0"   onchange="<?php echo"chan($countnew)";?>" id="<?php echo"check$countnew";?>"  data-toggle="toggle"  data-style="ios"   data-size="small" data-on='<i class="fa fa-eye-slash fa-lg"></i> Ocultar' data-off='<i class="fa fa-eye fa-lg"></i> Mostrar' data-onstyle="info" data-offstyle="default" checked>
+                                
+                               
+                                
+                                <?php }else{ ?>
+                                  <input type="checkbox" value="0"   onchange="<?php echo"chan($countnew)";?>" id="<?php echo"check$countnew";?>"  data-toggle="toggle"  data-style="ios"   data-size="small" data-on='<i class="fa fa-eye-slash fa-lg"></i> Ocultar' data-off='<i class="fa fa-eye fa-lg"></i> Mostrar' data-onstyle="info" data-offstyle="default" >
+                                  
+                                  
+                              <?php
+                               }
                                echo"
+                               <input type='hidden'  name='only' id='only$countnew' value='".$Carrusel[3]."'>
+                               <input type='hidden' name='mostrar'  value='".$Carrusel[3]."'>
                                  <input type='hidden' name='Carrusel' id='Carrusel' value='".$Carrusel[0]."'>";?>
                                  <!-- <input type='submit'  value='Actualizar' class='btn btn-outline-warning btn-block'> -->
                               <button  type="submit" value='Actualizar' class="btn btn-deep-orange btn-sm btn-block mb-1"><i class="fas fa-edit fa-lg mr-1 white-text"></i> Editar</button>
@@ -162,7 +175,7 @@
                                 echo"
                                   </form>
                                 </td>
-                              </tr> "; }?>
+                              </tr> "; $countnew +=1;}?>
                             <!-- <tr>
                               <th scope="row">1</th>
                               <td style="max-width: 120px;min-width: 220px;">
@@ -425,6 +438,21 @@
   <script type="text/javascript">
     // Animations initialization
     new WOW().init();
+  </script>
+  <script type="text/javascript">
+
+  function chan(id) {
+    if( $('#check'+id).prop('checked') ) {
+      $( "#only"+id ).val('0');
+      console.log(1)
+    }else{
+      $( "#only"+id ).val('1');
+      console.log(0)
+    }
+   
+  
+}
+  
   </script>
 </body>
 

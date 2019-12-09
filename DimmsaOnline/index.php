@@ -117,9 +117,22 @@
 
       <!--Indicators-->
       <ol class="carousel-indicators">
-        <li data-target="#carousel-example-1z" data-slide-to="0" class="active"></li>
-        <li data-target="#carousel-example-1z" data-slide-to="1"></li>
-        <li data-target="#carousel-example-1z" data-slide-to="2"></li>
+      <?php 
+          $queryCarrusel = "SELECT * FROM CARRUSEL WHERE mostrar = 0 order by(ordenar) asc"; 
+          $rsCarrusel = mysqli_query($con, $queryCarrusel) or die ("Error de consulta");
+          $count = 0;
+          while ($Carrusel = mysqli_fetch_array($rsCarrusel)) {
+
+            if($count==0){
+              echo "<li data-target='#carousel-example-1z' data-slide-to='$count' class='active'></li>";
+            }else{
+              echo "<li data-target='#carousel-example-1z' data-slide-to='$count' ></li>";
+            }
+            $count+=1;
+              }
+              
+              ?>
+       
       </ol>
       <!--/.Indicators-->
 
@@ -128,19 +141,26 @@
 
         <!--First slide-->
         <?php 
-          $queryCategoria = "SELECT * FROM CARRUSEL"; 
-          $rsCategoria = mysqli_query($con, $queryCategoria) or die ("Error de consulta");
-                
-          while ($Categoria = mysqli_fetch_array($rsCategoria)) {
-            ?>
-             <div class="carousel-item active">
+          $queryCarrusel = "SELECT * FROM CARRUSEL WHERE mostrar = 0 order by ordenar asc"; 
+          $rsCarrusel = mysqli_query($con, $queryCarrusel) or die ("Error de consulta");
+          $count=0;
+          while ($Carrusel = mysqli_fetch_array($rsCarrusel)) {
+            if($count==0){
+              ?>
+             <div class="carousel-item active ">
+            
             <?php
-            echo "
-            <div class'view' styl'=background-image: url('Media/Carrusel/$Carrusel[1]'); background-repeat: no-repeat; background-size: cover;'>
-            "; 
+            }else{
+            ?>
+             <div class="carousel-item ">
+            
+            <?php
+            }
+             $route= "'Media/Carrusel/Banner.png'";
+             
+            echo '
+            <div class="view" style="background-image:'; echo "url('Media/Carrusel/$Carrusel[1]');"; echo' background-repeat: no-repeat; background-size: cover">'; 
       ?>
-       
-
             <!-- Mask & flexbox options-->
             <div class="mask rgba-black-light d-flex justify-content-end align-items-end ">
               <div class="text-center white-text mx-5 wow fadeIn"  >     
@@ -153,56 +173,8 @@
 
           </div>
         </div>
-          <?php }?>
-        <!--/First slide-->
-
-        <!--Second slide-->
-        <div class="carousel-item">
-          <div class="view" style="background-image: url('img/content/comedorDior.PNG'); background-repeat: no-repeat; background-size: cover;">
-
-            <!-- Mask & flexbox options-->
-            <div class="mask rgba-black-light d-flex justify-content-center align-items-center">
-
-              <!-- Content -->
-              <div class="mask rgba-black-light d-flex justify-content-end align-items-end ">
-                  <div class="text-center white-text mx-5 wow fadeIn"  >     
-                    <h1 class="mb-4">
-                      <strong>  <span class="badge badge-pill ambar-color">DIMMSA 2019</span> </strong>
-                    </h1>
-                  </div>
-                </div>
-             
-            </div>
-            </div>
-            <!-- Mask & flexbox options-->
-
-          </div>
-        </div>
-        <!--/Second slide-->
-
-        <!--Third slide-->
-        <div class="carousel-item">
-          <div class="view" style="background-image: url('img/content/banner.png'); background-repeat: no-repeat; background-size: cover;">
-
-            <!-- Mask & flexbox options-->
-            <div class="mask rgba-black-light d-flex justify-content-center align-items-center">
-
-              <!-- Content -->
-              <div class="mask rgba-black-light d-flex justify-content-end align-items-end ">
-                  <div class="text-center white-text mx-5 wow fadeIn"  >     
-                    <h1 class="mb-4">
-                      <strong>  <span class="badge badge-pill ambar-color">DIMMSA 2019</span> </strong>
-                    </h1>
-                  </div>
-                </div>
-              <!-- Content -->
-
-            </div>
-            <!-- Mask & flexbox options-->
-
-          </div>
-        </div>
-        <!--/Third slide-->
+          <?php $count +=1;}?>
+       
 
       </div>
       <!--/.Slides-->
