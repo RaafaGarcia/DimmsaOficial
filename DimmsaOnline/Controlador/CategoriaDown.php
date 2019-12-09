@@ -1,5 +1,5 @@
 <?php
-include "../Controlador/Conexion.php";
+include "./Controlador/Conexion.php";
 
 $Nombre = $_POST['Eliminar'];
 

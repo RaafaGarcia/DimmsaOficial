@@ -1,4 +1,4 @@
-<?php include "../Controlador/Conexion.php"; ?>
+<?php include "./Controlador/Conexion.php"; ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -332,7 +332,7 @@
                                       <div class='card'>
                           
                                         <div class='view overlay'>
-                                          <img src='../Media/$Producto[1].jpg'  class='card-img-top'
+                                          <img src='./Media/$Producto[1].jpg'  class='card-img-top'
                                             alt=''>
                                           <a href='./producto?ref=$Producto[0]'>
                                             <div class='mask rgba-white-slight'></div>
@@ -394,7 +394,7 @@
                           
                                         <div class='view overlay'>
                                        
-                                          <img src='../Media/$Producto[1].jpg'  class='card-img-top'
+                                          <img src='./Media/$Producto[1].jpg'  class='card-img-top'
                                             alt=''>
                                         
                                           <a href='./producto?ref=$Producto[0]'>

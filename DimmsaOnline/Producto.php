@@ -1,4 +1,4 @@
-<?php include "../Controlador/Conexion.php"; ?>
+<?php include "./Controlador/Conexion.php"; ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -92,7 +92,7 @@
                 
                 echo '<div class="col-md-6 mb-4">';
                 echo '';
-                echo "<img src='../Media/$Detalle[1].jpg' style='border-radius:10px;width: 950px; height: 700px;' class='img-fluid' alt=''> ";
+                echo "<img src='./Media/$Detalle[1].jpg' style='border-radius:10px;width: 950px; height: 700px;' class='img-fluid' alt=''> ";
                 echo '';
                 echo '</div>';
                 echo '<!--Grid column-->';

@@ -1,4 +1,4 @@
-<?php include "../Controlador/Conexion.php"; ?>
+<?php include "./Controlador/Conexion.php"; ?>
 <!DOCTYPE html>
 <html lang="en">
 
