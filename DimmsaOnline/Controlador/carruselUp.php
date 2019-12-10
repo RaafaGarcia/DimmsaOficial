@@ -1,5 +1,5 @@
 <?php
-include "../Controlador/Conexion.php";
+include "./Conexion.php";
 
 $nombreArchivo = $_FILES["file-input"]["name"];
 $id = $_POST['Carrusel'];
@@ -7,7 +7,7 @@ $ordenar = $_POST['ordenar'];
 $mostrar = $_POST['mostrar'];
 $new = $_POST['newOrdenar'];
 $opt = $_POST['only'];
-echo"$id,$ordenar,$mostrar,$new,$opt";
+
 
 
    if (file_exists("../Media/Carrusel/" . $_FILES["file-input"]["name"]))

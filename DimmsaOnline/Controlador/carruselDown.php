@@ -1,5 +1,5 @@
 <?php
-include "../Controlador/Conexion.php";
+include "./Conexion.php";
 
 
 $id = $_POST['Carrusel'];
