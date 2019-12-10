@@ -264,8 +264,8 @@
                     </div>
                   </div>
                   <div class="tab-pane fade" id="producto" role="tabpanel" aria-labelledby="contact-tab">
-                      <div class="row">
-                          <div class="col-md-7">
+                  <div class="row">
+                          <div class="col-md-8">
                             <div class="table-responsive"> 
                               <table class="table table-hover ">
                                   <thead class="orange white-text">
@@ -275,97 +275,42 @@
                                       <th scope="col">Acción</th>
                                     </tr>
                                   </thead>
+                                  <?php $queryProducto = "SELECT * FROM PRODUCTO"; 
+                                          $rsProducto = mysqli_query($con, $queryProducto) or die ("Error de consulta");
+                                              
+                                            while ($Producto = mysqli_fetch_array($rsProducto)) {?>
+                                              
+                                               
                                   <tbody>
                                     <tr>
-                                      <th scope="row">1</th>
+                                      <th scope="row"><?php echo $Producto[0]?></th>
                                       <td >
-                                         Comedor Pierre
+                                         <?php echo $Producto[1];?>
                                       </td>
                                       <td style="width: 150px;">
-                                          <button  type="button" class="btn btn-info btn-sm btn-block mb-1"><i class="fas fa-eye fa-lg mr-1 white-text"></i> detalle</button>
-                                        <button  type="button" class="btn btn-red btn-sm btn-block mb-1"><i class="fas fa-trash fa-lg mr-1 white-text"></i> Borrar</button>
+                                        <?php echo 
+                                        "<button type='button' class='btn btn-sm btn-success btn-block openBtn' value=".$Producto[0]." data-toggle='modal' data-target='#editarModal'><i class='fas fa-pencil fa-lg mr-1 white-text'></i> Editar</button>"?>
+                                        <button type="button" class="btn btn-red btn-sm btn-block mb-1"><i class="fas fa-trash fa-lg mr-1 white-text"></i> Borrar</button>
                                       </td>
                                     </tr>
+                                    <?php }?>
                                    
                                   </tbody>
                                 </table>
                             </div>
                           </div>
     
-                          <div class="col-md-5">
-                              <form class="text-center border border-light p-5" action="#!">
-    
+                          <div class="col-md-4 ">
+                                  
+                                  <div class="text-center border border-light p-5">                       
                                   <p class="h4 mb-4">Nuevo Producto</p>
                               
                                   <p>En esta seccion puedes agregar un producto a tu inventario.</p>
-                              
-                              
-                                  <!-- Name -->
-                                  <div class="md-form">
-                                      <input type="text" id="form1" class="form-control" required>
-                                      <label for="form1">Nombre</label>
-                                  </div>
-                                  
-                                  <!-- imagen -->
-                                  <div class="p-1 mb-2" style="text-align:left;background:whitesmoke;border-radius:5px" >
-                                      <label for="">Imagen</label>
-                                      <div class="custom-file">
-                                        <input type="file" class="custom-file-input" id="inputGroupFile01"
-                                          aria-describedby="inputGroupFileAddon01">
-                                        <label class="custom-file-label" for="inputGroupFile01">Seleccionar</label>
-                                      </div>
-                                    </div>
-                                  
-                                  <!-- referencia -->
-                                  <div class="p-1" style="text-align:left;background:whitesmoke;border-radius:5px" >
-                                      <label for="">Referencia</label>
-                                      <div class="custom-file">
-                                        <input type="file" class="custom-file-input" id="inputGroupFile01"
-                                          aria-describedby="inputGroupFileAddon01">
-                                        <label class="custom-file-label" for="inputGroupFile01">Seleccionar</label>
-                                      </div>
-                                    </div>
-
-                                  <!-- materiales -->
-                                  <div class="md-form">
-                                      <textarea id="textarea-char-counter" class="form-control md-textarea" length="120" rows="2"></textarea>
-                                      <label for="textarea-char-counter">Materiales</label>
-                                  </div>
-
-                                  <!-- colores -->
-                                  <div class="md-form">
-                                      <textarea id="textarea-char-counter" class="form-control md-textarea" length="120" rows="2"></textarea>
-                                      <label for="textarea-char-counter">Colores</label>
-                                  </div>
-
-                                  <!-- medidias -->
-                                  <div class="md-form">
-                                      <textarea id="textarea-char-counter" class="form-control md-textarea" length="120" rows="2"></textarea>
-                                      <label for="textarea-char-counter">Medidas</label>
-                                  </div>
-
-                                  <!-- categoria -->
-                                  <div class="" style="text-align:left">
-                                      <label for="" style="text-align:left">Categoria</label>
-                                      <select class="browser-default custom-select">
-                                          <option selected value="">Selecciona una categoria</option>
-                                          <?php $queryCategoria = "SELECT * FROM CATEGORIA"; 
-                                          $rsCategoria = mysqli_query($con, $queryCategoria) or die ("Error de consulta");
-                                              
-                                            while ($Categoria = mysqli_fetch_array($rsCategoria)) {
-                                              echo"
-                                              <option value='$Categoria[0]'>$Categoria[0]</option>
-                                               ";
-                                               }?>
-                                        </select>
-                                  </div>
-                                  <br>
-                              
-                                
-                                  <button class="btn btn-success btn-block" type="submit">Agregar</button>
-                              
-                              
-                              </form>
+                              <!-- Button to Open the Modal -->
+                                  <button type="button" class="btn btn-success btn-block" data-toggle="modal" data-target="#myModal"><i class="fas fa-plus fa-lg mr-1 white-text"></i>
+                                Agregar
+                              </button>
+                             </div>
                               <!-- Default form subscription -->
                           </div>
                         </div>
@@ -386,7 +331,123 @@
     </div>
   </main>
   <!--Main layout-->
+  <div class="modal fade" id="myModal">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
 
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Agregar Producto</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+         <!-- Form -->
+                              <form class="text-center border border-light p-5" action="productoUp.php" method="post" enctype="multipart/form-data">
+                                  <!-- Name -->
+                                  <div class="md-form">
+                                      <input name="Nombre" type="text" id="form1" class="form-control" required>
+                                      <label for="form1">Nombre</label>
+                                  </div>
+                                  
+                                  <!-- imagen -->
+                                  <div class="p-1 mb-2" style="text-align:left;background:whitesmoke;border-radius:5px" >
+                                      <label for="">Imagen</label>
+                                      <div class="custom-file">
+                                        <input name="Imagen" type="file" class="custom-file-input" id="inputGroupFile01"
+                                          aria-describedby="inputGroupFileAddon01">
+                                        <label class="custom-file-label" for="inputGroupFile01">Seleccionar</label>
+                                      </div>
+                                    </div>
+                                  
+                                  <!-- referencia -->
+                                  <div class="p-1" style="text-align:left;background:whitesmoke;border-radius:5px" >
+                                      <label for="">Referencia</label>
+                                      <div class="custom-file">
+                                        <input name="Referencia" type="file" class="custom-file-input" id="inputGroupFile01"
+                                          aria-describedby="inputGroupFileAddon01">
+                                        <label class="custom-file-label" for="inputGroupFile01">Seleccionar</label>
+                                      </div>
+                                    </div>
+
+                                  <!-- materiales -->
+                                  <div class="md-form">
+                                      <textarea name="Materiales" id="textarea-char-counter" class="form-control md-textarea" length="120" rows="2"></textarea>
+                                      <label for="textarea-char-counter">Materiales</label>
+                                  </div>
+
+                                  <!-- colores -->
+                                  <div class="md-form">
+                                      <textarea name="Colores" id="textarea-char-counter" class="form-control md-textarea" length="120" rows="2"></textarea>
+                                      <label for="textarea-char-counter">Colores</label>
+                                  </div>
+
+                                  <!-- medidias -->
+                                  <div class="md-form">
+                                      <textarea name="Medidas" id="textarea-char-counter" class="form-control md-textarea" length="120" rows="2"></textarea>
+                                      <label for="textarea-char-counter">Medidas</label>
+                                  </div>
+
+                                  <!-- categoria -->
+                                  <div class="" style="text-align:left">
+                                      <label for="" style="text-align:left">Categoria</label>
+                                      <select name="Categoria" class="browser-default custom-select">
+                                          <option selected value="">Selecciona una categoria</option>
+                                          <?php $queryCategoria = "SELECT * FROM CATEGORIA"; 
+                                          $rsCategoria = mysqli_query($con, $queryCategoria) or die ("Error de consulta");
+                                              
+                                            while ($Categoria = mysqli_fetch_array($rsCategoria)) {
+                                              echo"
+                                              <option value='$Categoria[0]'>$Categoria[0]</option>
+                                               ";
+                                               }?>
+                                        </select>
+                                  </div>
+                                  <br>
+                              
+                                
+                                  <button class="btn btn-success btn-block" type="submit">Guardar</button>
+
+                              
+                              
+                              </form>
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- The Modal -->
+<div class="modal fade" id="editarModal">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Editar Producto</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+         <!-- Form -->
+                             
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+      </div>
+
+    </div>
+  </div>
+</div>
   <!--Footer-->
   <footer class="page-footer text-center font-small mt-4 wow fadeIn">
 
@@ -454,6 +515,14 @@
 }
   
   </script>
+    <script type="text/javascript">
+$('.openBtn').on('click',function(){
+  var id_button = $(this).val();
+    $('.modal-body').load('getContent.php?id='+id_button ,function(){
+        $('#editarModal').modal({show:true});
+    });
+});
+</script>
 </body>
 
 </html>
