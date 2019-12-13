@@ -1,13 +1,14 @@
 <?php
-include "../Controlador/Conexion.php";
+include "./Conexion.php";
 
 $nombreArchivo = $_FILES["file-input"]["name"];
 $id = $_POST['Carrusel'];
-if (isset($_POST['opc']) && $_POST['opc'] == '1'){
-  $opc = 1;
-}else{
-  $opc = 0;
-}
+$ordenar = $_POST['ordenar'];
+$mostrar = $_POST['mostrar'];
+$new = $_POST['newOrdenar'];
+$opt = $_POST['only'];
+
+
 
    if (file_exists("../Media/Carrusel/" . $_FILES["file-input"]["name"]))
       {echo $_FILES["file-input"]["name"] . " ya existe se reemplazara en. ";
@@ -15,9 +16,9 @@ if (isset($_POST['opc']) && $_POST['opc'] == '1'){
         unlink("../Media/Carrusel/" . $nombreArchivo);
         move_uploaded_file($_FILES["file-input"]["tmp_name"], "../Media/Carrusel/" . $_FILES["file-input"]["name"]);
         
-        $sql = "INSERT INTO CARRUSEL values(".$id.",'". $nombreArchivo ."',1) ON DUPLICATE KEY UPDATE IMG_REFERENCIA ='". $nombreArchivo ."', OPC = 1;";
+        $sql = "INSERT INTO CARRUSEL values(".$id.",'". $nombreArchivo ."',$ordenar,$mostrar) ON DUPLICATE KEY UPDATE IMG_REFERENCIA ='". $nombreArchivo ."', ordenar = $new,mostrar=$opt;";
         if(mysqli_query($con, $sql)){
-          header("Location: ../Vista/Inventario.php");
+          header("Location: ../inventario.php");
         }
       }else{   
 
@@ -25,9 +26,9 @@ if (isset($_POST['opc']) && $_POST['opc'] == '1'){
       $nombreArchivo = $_FILES["file-input"]["name"];
       }
 
-      $sql = "INSERT INTO CARRUSEL values(".$id.",'". $nombreArchivo ."',1) ON DUPLICATE KEY UPDATE IMG_REFERENCIA ='". $nombreArchivo ."', OPC = 1;";
+      $sql = "INSERT INTO CARRUSEL values(".$id.",'". $nombreArchivo ."',$ordenar,$mostrar) ON DUPLICATE KEY UPDATE IMG_REFERENCIA ='". $nombreArchivo ."', ordenar = $new,mostrar=$opt;";
     	if(mysqli_query($con, $sql)){
-        header("Location: ../Vista/Inventario.php");
+        header("Location: ../inventario.php");
 		  }
 
     

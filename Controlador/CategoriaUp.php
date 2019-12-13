@@ -1,11 +1,11 @@
 <?php
-include "../Controlador/Conexion.php";
+include "./Conexion.php";
 
 $Nombre = $_POST['Nombre'];
 
       $sql = "INSERT INTO CATEGORIA values('". $Nombre ."');";
     	if(mysqli_query($con, $sql)){
-        header("Location: ../Vista/Inventario.php");
+        header("Location: ../inventario.php");
 		  }
 
     
