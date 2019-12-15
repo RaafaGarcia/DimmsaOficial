@@ -118,8 +118,8 @@
       <!--Indicators-->
       <ol class="carousel-indicators">
       <?php 
-          $queryCarrusel = "SELECT * FROM CARRUSEL WHERE mostrar = 0 order by(ordenar) asc"; 
-          $rsCarrusel = mysqli_query($con, $queryCarrusel) or die ("Error de consulta");
+          $queryCarrusel = "SELECT * FROM carrusel WHERE mostrar = 0 order by(ordenar) asc"; 
+          $rsCarrusel = mysqli_query($con, $queryCarrusel) or die ("Error de consulta 1");
           $count = 0;
           while ($Carrusel = mysqli_fetch_array($rsCarrusel)) {
 
@@ -141,8 +141,8 @@
 
         <!--First slide-->
         <?php 
-          $queryCarrusel = "SELECT * FROM CARRUSEL WHERE mostrar = 0 order by ordenar asc"; 
-          $rsCarrusel = mysqli_query($con, $queryCarrusel) or die ("Error de consulta");
+          $queryCarrusel = "SELECT * FROM carrusel WHERE mostrar = 0 order by ordenar asc"; 
+          $rsCarrusel = mysqli_query($con, $queryCarrusel) or die ("Error de consulta 2");
           $count=0;
           while ($Carrusel = mysqli_fetch_array($rsCarrusel)) {
             if($count==0){
@@ -272,8 +272,8 @@
                     </li>
                     
                     <?php 
-                        $queryCategoria = "SELECT * FROM CATEGORIA"; 
-                        $rsCategoria = mysqli_query($con, $queryCategoria) or die ("Error de consulta");
+                        $queryCategoria = "SELECT * FROM categoria"; 
+                        $rsCategoria = mysqli_query($con, $queryCategoria) or die ("Error de consulta 3");
                         $count1=0;         
                         while ($Categoria = mysqli_fetch_array($rsCategoria)) {
                           echo "
@@ -307,8 +307,8 @@
               <div class="tab-content" id="myTabContent">
                   <div class="tab-pane fade show active" id="todas" role="tabpanel" aria-labelledby="todas-tab">
                     <div class="row">
-                   <?php $queryProducto = "SELECT * FROM PRODUCTO "; 
-                            $rsProducto = mysqli_query($con, $queryProducto) or die ("Error de consulta");  
+                   <?php $queryProducto = "SELECT * FROM producto "; 
+                            $rsProducto = mysqli_query($con, $queryProducto) or die ("Error de consulta 4");  
                                 while ($Producto = mysqli_fetch_array($rsProducto)) {
                                 echo "
                                     <div class='col-lg-4 col-md-6 mb-4'>
@@ -318,7 +318,7 @@
                                         <div class='view overlay'>
                                           <img src='./Media/Productos/$Producto[2]'  class='card-img-top'
                                             alt=''>
-                                          <a href='./producto?ref=$Producto[0]'>
+                                          <a href='./Producto.php?ref=$Producto[0]'>
                                             <div class='mask rgba-white-slight'></div>
                                           </a>
                                         </div>
@@ -336,7 +336,7 @@
                                             </strong>
                                           </h5>
                           
-                                         <a href='./producto?ref=$Producto[0]'>
+                                         <a href='./Producto.php?ref=$Producto[0]'>
                                           <button type='button' class='btn btn-sm btn-block peach-gradient '  data-toggle='modal' data-target='#$Producto[1]'><b class='h6'>Ver Producto</b></button>
                                           </a>
                           
@@ -360,15 +360,15 @@
                                 
                       ?>
                   </div>
-                  <?php $queryCategoria = "SELECT * FROM CATEGORIA"; 
-                      $rsCategoria = mysqli_query($con, $queryCategoria) or die ("Error de consulta"); 
+                  <?php $queryCategoria = "SELECT * FROM categoria"; 
+                      $rsCategoria = mysqli_query($con, $queryCategoria) or die ("Error de consulta 5"); 
                       $countCat=0;        
                       while ($Categoria = mysqli_fetch_array($rsCategoria)) {
                         echo"<div class='tab-pane fade show' id='cat$countCat' role='tabpanel' aria-labelledby='cat$countCat-tab'>
                                 <div class='row'>
                         "; 
-                            $queryProducto = "SELECT * FROM PRODUCTO WHERE CATEGORIA ='$Categoria[0]'"; 
-                            $rsProducto = mysqli_query($con, $queryProducto) or die ("Error de consulta");  
+                            $queryProducto = "SELECT * FROM producto WHERE CATEGORIA ='$Categoria[0]'"; 
+                            $rsProducto = mysqli_query($con, $queryProducto) or die ("Error de consulta 6");  
                             $count=0;       
                               while ($Producto = mysqli_fetch_array($rsProducto)) {
                                 echo "
@@ -381,7 +381,7 @@
                                           <img src='./Media/Productos/$Producto[2]'  class='card-img-top'
                                             alt=''>
                                         
-                                          <a href='./producto?ref=$Producto[0]'>
+                                          <a href='./Producto.php?ref=$Producto[0]'>
                                             <div class='mask rgba-white-slight'></div>
                                           </a>
                                         </div>
@@ -399,7 +399,7 @@
                                             </strong>
                                           </h5>
                           
-                                          <a href='./producto?ref=$Producto[0]'>
+                                          <a href='./Producto.php?ref=$Producto[0]'>
                                           <button type='button' class='btn btn-sm btn-block peach-gradient '  data-toggle='modal' data-target='#$Producto[1]'><b class='h6'>Ver Producto</b></button>
                                           </a>
                           

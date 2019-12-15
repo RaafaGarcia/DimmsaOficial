@@ -86,7 +86,7 @@
       <div class="row wow fadeIn p-4">
       <?php 
         $id=$_GET['ref'];
-        $queryDetalle = "SELECT * FROM PRODUCTO WHERE ID_PRODUCTO=$id"; 
+        $queryDetalle = "SELECT * FROM producto WHERE ID_PRODUCTO=$id"; 
         $rsDetalle = mysqli_query($con, $queryDetalle) or die ("Error de consulta");         
               while ($Detalle = mysqli_fetch_array($rsDetalle)) {
                 

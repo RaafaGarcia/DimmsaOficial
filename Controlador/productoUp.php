@@ -25,7 +25,7 @@ $Categoria = $_POST['Categoria'];
      move_uploaded_file($_FILES["Referencia"]["tmp_name"], "../Media/Referencias/" . $_FILES["Referencia"]["name"]);
       }
 
-      $sql = "INSERT INTO PRODUCTO values(null,'$Nombre','$Imagen','$Referencia','$Materiales','$Colores','$Medidas','$Categoria');";
+      $sql = "INSERT INTO producto values(null,'$Nombre','$Imagen','$Referencia','$Materiales','$Colores','$Medidas','$Categoria');";
     	if(mysqli_query($con, $sql)){
         header("Location: ../inventario.php");
 		  }

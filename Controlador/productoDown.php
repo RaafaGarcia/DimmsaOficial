@@ -7,7 +7,7 @@ $Ref = $_POST['Ref'];
 
 
 
-      $sql = "DELETE FROM PRODUCTO WHERE ID_PRODUCTO = ".$Id;
+      $sql = "DELETE FROM producto WHERE ID_PRODUCTO = ".$Id;
     	if(mysqli_query($con, $sql)){
 
         if ($Img == "Dimmsa.png") {

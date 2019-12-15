@@ -16,7 +16,7 @@ $opt = $_POST['only'];
         unlink("../Media/Carrusel/" . $nombreArchivo);
         move_uploaded_file($_FILES["file-input"]["tmp_name"], "../Media/Carrusel/" . $_FILES["file-input"]["name"]);
         
-        $sql = "INSERT INTO CARRUSEL values(".$id.",'". $nombreArchivo ."',$ordenar,$mostrar) ON DUPLICATE KEY UPDATE IMG_REFERENCIA ='". $nombreArchivo ."', ordenar = $new,mostrar=$opt;";
+        $sql = "INSERT INTO carrusel values(".$id.",'". $nombreArchivo ."',$ordenar,$mostrar) ON DUPLICATE KEY UPDATE IMG_REFERENCIA ='". $nombreArchivo ."', ordenar = $new,mostrar=$opt;";
         if(mysqli_query($con, $sql)){
           header("Location: ../inventario.php");
         }
@@ -26,7 +26,7 @@ $opt = $_POST['only'];
       $nombreArchivo = $_FILES["file-input"]["name"];
       }
 
-      $sql = "INSERT INTO CARRUSEL values(".$id.",'". $nombreArchivo ."',$ordenar,$mostrar) ON DUPLICATE KEY UPDATE IMG_REFERENCIA ='". $nombreArchivo ."', ordenar = $new,mostrar=$opt;";
+      $sql = "INSERT INTO carrusel values(".$id.",'". $nombreArchivo ."',$ordenar,$mostrar) ON DUPLICATE KEY UPDATE IMG_REFERENCIA ='". $nombreArchivo ."', ordenar = $new,mostrar=$opt;";
     	if(mysqli_query($con, $sql)){
         header("Location: ../inventario.php");
 		  }

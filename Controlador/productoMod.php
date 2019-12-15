@@ -30,7 +30,7 @@ $Categoria = $_POST['Categoria'];
      unlink("../Media/Referencias/" . $RefOld);
       }
 
-  $sql = "INSERT INTO PRODUCTO values(".$Id.",'$Nombre','$Imagen','$Referencia','$Materiales','$Colores','$Medidas','$Categoria') ON DUPLICATE KEY UPDATE
+  $sql = "INSERT INTO producto values(".$Id.",'$Nombre','$Imagen','$Referencia','$Materiales','$Colores','$Medidas','$Categoria') ON DUPLICATE KEY UPDATE
         Nombre = '$Nombre', 
         Imagen = '$Imagen', 
         ImgReferencia = '$Referencia', 

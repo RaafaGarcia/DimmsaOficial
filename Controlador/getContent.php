@@ -4,7 +4,7 @@
     $id = $_GET['id'];
 
     //get content from database
-    $queryProducto = "SELECT * FROM PRODUCTO WHERE ID_PRODUCTO = ".$id;
+    $queryProducto = "SELECT * FROM producto WHERE ID_PRODUCTO = ".$id;
     $rsProducto = mysqli_query($con, $queryProducto) or die ("Error de consulta");
     $Producto = mysqli_fetch_array($rsProducto);
 
@@ -62,7 +62,7 @@
               <label for='' style='text-align:left'>Categoria</label>
               <select name='Categoria' class='browser-default custom-select' required>
                 <option selected value=".$Producto[7].">".$Producto[7]."</option>";
-                  $queryCategoria = "SELECT * FROM CATEGORIA"; 
+                  $queryCategoria = "SELECT * FROM categoria"; 
                   $rsCategoria = mysqli_query($con, $queryCategoria) or die ("Error de consulta");
                                               
                     while ($Categoria = mysqli_fetch_array($rsCategoria)) {

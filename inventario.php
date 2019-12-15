@@ -115,7 +115,7 @@
                             </tr>
                           </thead>
                           <tbody>
-                          <?php $queryCarrusel = "SELECT * FROM CARRUSEL order by ordenar asc"; 
+                          <?php $queryCarrusel = "SELECT * FROM carrusel order by ordenar asc"; 
                           $rsCarrusel = mysqli_query($con, $queryCarrusel) or die ("Error de consulta"); 
                           $countnew =1;        
                             while ($Carrusel = mysqli_fetch_array($rsCarrusel)) {
@@ -167,8 +167,10 @@
                                 echo" 
                                 </form>
                                   <form id='uploadimage' action='./Controlador/carruselDown.php' method='post' enctype='multipart/form-data'>
+                                  <input type='hidden' name='mostrar'  value='".$Carrusel[3]."'>
                                   <input type='hidden' name='Carrusel' value='".$Carrusel[0]."'>
-                                  <input type='hidden' name='Borrar' value='".$Carrusel[1]."'>";?>
+                                  <input type='hidden'  name='ordenar' value='$Carrusel[2]'>
+                                  <input type='hidden' name='Borrar' value='$Carrusel[1]'>";?>
                                   <!-- <input type='submit'  value='Borrar' class='btn btn-outline-danger btn-block'> -->
                                   <button  type="submit" value='Borrar' class="btn btn-red btn-sm btn-block mb-1"><i class="fas fa-trash fa-lg mr-1 white-text"></i> Borrar</button>
                                 <?php 
@@ -214,7 +216,7 @@
                               </thead>
                               <tbody>
                                 
-                                <?php $queryCategoria = "SELECT * FROM CATEGORIA"; 
+                                <?php $queryCategoria = "SELECT * FROM categoria"; 
                                 $rsCategoria = mysqli_query($con, $queryCategoria) or die ("Error de consulta");
                                 $count=1;    
                                   while ($Categoria = mysqli_fetch_array($rsCategoria)) {
@@ -276,7 +278,7 @@
                                       <th scope="col">Acción</th>
                                     </tr>
                                   </thead>
-                                  <?php $queryProducto = "SELECT * FROM PRODUCTO"; 
+                                  <?php $queryProducto = "SELECT * FROM producto"; 
                                           $rsProducto = mysqli_query($con, $queryProducto) or die ("Error de consulta");
                                               
                                             while ($Producto = mysqli_fetch_array($rsProducto)) {?>
@@ -402,7 +404,7 @@
                                       <label for="" style="text-align:left">Categoria</label>
                                       <select name="Categoria" class="browser-default custom-select" required>
                                           <option selected value="">Selecciona una categoria</option>
-                                          <?php $queryCategoria = "SELECT * FROM CATEGORIA"; 
+                                          <?php $queryCategoria = "SELECT * FROM categoria"; 
                                           $rsCategoria = mysqli_query($con, $queryCategoria) or die ("Error de consulta");
                                               
                                             while ($Categoria = mysqli_fetch_array($rsCategoria)) {
