@@ -522,35 +522,37 @@
             <div class="card">
               <div class="card-body">
                 <!-- Header -->
-                <form>
                 <div class="form-header  accent-1 p-2" style="text-align:center;color:white;border-radius:5px;background:#929fba">
                   <h3 class="mt-2"><i class="fas fa-envelope"></i> Escribenos</h3>
                 </div>
                 <p class="dark-grey-text">Te responderemos rapidamente, trata de ser claro </p>
                 <!-- Body -->
+              <form action='./Controlador/mail.php' method='post'>
+              <div>
                 <div class="md-form">
                   <i class="fas fa-user prefix grey-text"></i>
-                  <input type="text" id="form-name" class="form-control">
+                  <input type="text" name="name" class="form-control" required>
                   <label for="form-name">Nombre </label>
                 </div>
                 <div class="md-form">
                   <i class="fas fa-envelope prefix grey-text"></i>
-                  <input type="text" id="form-email" class="form-control">
+                  <input type="email" name="email" class="form-control" required>
                   <label for="form-email">E-mail</label>
                 </div>
                 <div class="md-form">
                   <i class="fas fa-tag prefix grey-text"></i>
-                  <input type="text" id="form-Subject" class="form-control">
+                  <input type="text" name="Subject" class="form-control" required>
                   <label for="form-Subject">Asunto</label>
                 </div>
                 <div class="md-form">
                   <i class="fas fa-pencil-alt prefix grey-text"></i>
-                  <textarea id="form-text" class="form-control md-textarea" rows="3"></textarea>
+                  <textarea name="text" class="form-control md-textarea" rows="3" required></textarea>
                   <label for="form-text">Escribe tu mensaje</label>
                 </div>
                 <div class="text-center">
-                  <button class="btn " style="color:white;background:#929fba">Enviar</button>
+                  <button type="submit" class="btn " style="color:white;background:#929fba">Enviar</button>
                 </div>
+              </div>
               </form>
               </div>
             </div>
