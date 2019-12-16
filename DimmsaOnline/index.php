@@ -21,11 +21,7 @@
     body,
     header,
     .carousel {
-     
       height: 90vh;
-    }
-    .view{
-      height:100%;
     }
 
     @media (max-width: 740px) {
@@ -34,30 +30,8 @@
       body,
       header,
       .carousel {
-        height: 260px;
+        height: 120vh;
       }
-      .view {
-        margin-top:60px;
-        max-width:100%;
-        height: 200px;
-      }
-      .cats {
-        margin-top:40px;
-        
-      }
-      /* .view {
-      
-      margin:0px;
-      margin-top:100px;
-      padding:0px;
-      width: 100%;
-
-      vertical-align: middle;
-      background-size:300px 100px;
-      background-position:50% ;
-      height: 35vh;
-      
-    } */
     }
 
     @media (min-width: 800px) and (max-width: 850px) {
@@ -67,9 +41,6 @@
       header,
       .carousel {
         height: 120vh;
-      }
-      .view {
-        height: 600px;
       }
     }
 
@@ -147,8 +118,8 @@
       <!--Indicators-->
       <ol class="carousel-indicators">
       <?php 
-          $queryCarrusel = "SELECT * FROM carrusel WHERE mostrar = 0 order by(ordenar) asc"; 
-          $rsCarrusel = mysqli_query($con, $queryCarrusel) or die ("Error de consulta 1");
+          $queryCarrusel = "SELECT * FROM CARRUSEL WHERE mostrar = 0 order by(ordenar) asc"; 
+          $rsCarrusel = mysqli_query($con, $queryCarrusel) or die ("Error de consulta");
           $count = 0;
           while ($Carrusel = mysqli_fetch_array($rsCarrusel)) {
 
@@ -170,8 +141,8 @@
 
         <!--First slide-->
         <?php 
-          $queryCarrusel = "SELECT * FROM carrusel WHERE mostrar = 0 order by ordenar asc"; 
-          $rsCarrusel = mysqli_query($con, $queryCarrusel) or die ("Error de consulta 2");
+          $queryCarrusel = "SELECT * FROM CARRUSEL WHERE mostrar = 0 order by ordenar asc"; 
+          $rsCarrusel = mysqli_query($con, $queryCarrusel) or die ("Error de consulta");
           $count=0;
           while ($Carrusel = mysqli_fetch_array($rsCarrusel)) {
             if($count==0){
@@ -188,7 +159,7 @@
              $route= "'Media/Carrusel/Banner.png'";
              
             echo '
-            <div class="view" style="background-image:'; echo "url('Media/Carrusel/$Carrusel[1]');"; echo' background-repeat: no-repeat; background-size: cover;background-position: center center;">'; 
+            <div class="view"  style="background-image:'; echo "url('Media/Carrusel/$Carrusel[1]');"; echo' background-repeat: no-repeat; background-size: auto">'; 
       ?>
             <!-- Mask & flexbox options-->
             <div class="mask rgba-black-light d-flex justify-content-end align-items-end ">
@@ -277,33 +248,38 @@
         <br>
         <br>
           <div class="container " >
-          <span class="navbar-brand">PRODUCTOS:</span>
             <div style="padding-top:4%" class="sticky-top">
-              <nav class="navbar navbar-expand-lg navbar-dark   sticky-top mb-5 pt-3 cats" style="border-radius:5px;background:#929FBA">
+              <nav class="navbar navbar-expand-lg navbar-dark mdb-color sticky-top mb-5 pt-3 " style="border-radius:5px;">
 
                 <!-- Navbar brand -->
-                
-          
+                <span class="navbar-brand">Categorías:</span>
+        
+                <!-- Collapse button -->
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav"
+                  aria-controls="basicExampleNav" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+                </button>
+        
                 <!-- Collapsible content -->
-                <div class="" id="basicExampleNav">
+                <div class="collapse navbar-collapse" id="basicExampleNav">
         
                   <!-- Links -->
                   
-                    <ul class="nav nav-tabs mr-auto" id="myTab" role="tablist">
+                    <ul class="nav nav-tabs navbar-nav mr-auto" id="myTab" role="tablist">
                     <li class="nav-item active">
                       <a class="nav-link active" id="todas-tab" data-toggle="tab" href="#todas" role="tab" aria-controls="todas"
-                        aria-selected="true" style="color:black"><b>Todos</b></a>
+                        aria-selected="true">Todos</a>
                     </li>
                     
                     <?php 
-                        $queryCategoria = "SELECT * FROM categoria"; 
-                        $rsCategoria = mysqli_query($con, $queryCategoria) or die ("Error de consulta 3");
+                        $queryCategoria = "SELECT * FROM CATEGORIA"; 
+                        $rsCategoria = mysqli_query($con, $queryCategoria) or die ("Error de consulta");
                         $count1=0;         
                         while ($Categoria = mysqli_fetch_array($rsCategoria)) {
                           echo "
-                          <li class='nav-item '>
+                          <li class='nav-item active'>
                             <a class='nav-link' id='#cat$count1-tab' data-toggle='tab' href='#cat$count1' role='tab' aria-controls='#cat$count1'
-                              aria-selected='false' style='color:black'><b>$Categoria[0]</b></a>
+                              aria-selected='false'>$Categoria[0]</a>
                           </li>
                           
                           "; 
@@ -314,11 +290,11 @@
 
                   <!-- Links -->
         
-                  <!-- <form class="form-inline">
+                  <form class="form-inline">
                     <div class="md-form my-0">
                       <input class="form-control mr-sm-2" type="text" placeholder="Buscar" aria-label="Buscar">
                     </div>
-                  </form> -->
+                  </form>
                 </div>
                 <!-- Collapsible content -->
         
@@ -331,8 +307,8 @@
               <div class="tab-content" id="myTabContent">
                   <div class="tab-pane fade show active" id="todas" role="tabpanel" aria-labelledby="todas-tab">
                     <div class="row">
-                   <?php $queryProducto = "SELECT * FROM producto "; 
-                            $rsProducto = mysqli_query($con, $queryProducto) or die ("Error de consulta 4");  
+                   <?php $queryProducto = "SELECT * FROM PRODUCTO "; 
+                            $rsProducto = mysqli_query($con, $queryProducto) or die ("Error de consulta");  
                                 while ($Producto = mysqli_fetch_array($rsProducto)) {
                                 echo "
                                     <div class='col-lg-4 col-md-6 mb-4'>
@@ -340,9 +316,9 @@
                                       <div class='card'>
                           
                                         <div class='view overlay'>
-                                          <img src='./Media/Productos/$Producto[2]'  class='card-img-top '
+                                          <img src='./Media/$Producto[1].jpg'  class='card-img-top'
                                             alt=''>
-                                          <a href='./Producto.php?ref=$Producto[0]'>
+                                          <a href='./producto?ref=$Producto[0]'>
                                             <div class='mask rgba-white-slight'></div>
                                           </a>
                                         </div>
@@ -356,11 +332,11 @@
                                           </a>
                                           <h5>
                                             <strong>
-                                                <span class='badge p-2 badge-pill mdb-color'>$Producto[7]</span>
+                                                <span class='badge p-2 badge-pill mdb-color'>$Producto[6]</span>
                                             </strong>
                                           </h5>
                           
-                                         <a href='./Producto.php?ref=$Producto[0]'>
+                                         <a href='./producto?ref=$Producto[0]'>
                                           <button type='button' class='btn btn-sm btn-block peach-gradient '  data-toggle='modal' data-target='#$Producto[1]'><b class='h6'>Ver Producto</b></button>
                                           </a>
                           
@@ -384,15 +360,15 @@
                                 
                       ?>
                   </div>
-                  <?php $queryCategoria = "SELECT * FROM categoria"; 
-                      $rsCategoria = mysqli_query($con, $queryCategoria) or die ("Error de consulta 5"); 
+                  <?php $queryCategoria = "SELECT * FROM CATEGORIA"; 
+                      $rsCategoria = mysqli_query($con, $queryCategoria) or die ("Error de consulta"); 
                       $countCat=0;        
                       while ($Categoria = mysqli_fetch_array($rsCategoria)) {
                         echo"<div class='tab-pane fade show' id='cat$countCat' role='tabpanel' aria-labelledby='cat$countCat-tab'>
                                 <div class='row'>
                         "; 
-                            $queryProducto = "SELECT * FROM producto WHERE CATEGORIA ='$Categoria[0]'"; 
-                            $rsProducto = mysqli_query($con, $queryProducto) or die ("Error de consulta 6");  
+                            $queryProducto = "SELECT * FROM PRODUCTO WHERE CATEGORIA ='$Categoria[0]'"; 
+                            $rsProducto = mysqli_query($con, $queryProducto) or die ("Error de consulta");  
                             $count=0;       
                               while ($Producto = mysqli_fetch_array($rsProducto)) {
                                 echo "
@@ -402,10 +378,10 @@
                           
                                         <div class='view overlay'>
                                        
-                                          <img src='./Media/Productos/$Producto[2]'  class='card-img-top'
+                                          <img src='./Media/$Producto[1].jpg'  class='card-img-top'
                                             alt=''>
                                         
-                                          <a href='./Producto.php?ref=$Producto[0]'>
+                                          <a href='./producto?ref=$Producto[0]'>
                                             <div class='mask rgba-white-slight'></div>
                                           </a>
                                         </div>
@@ -419,11 +395,11 @@
                                           </a>
                                           <h5>
                                             <strong>
-                                            <span class='badge p-2 badge-pill mdb-color'>$Producto[7]</span>
+                                            <span class='badge p-2 badge-pill mdb-color'>$Producto[6]</span>
                                             </strong>
                                           </h5>
                           
-                                          <a href='./Producto.php?ref=$Producto[0]'>
+                                          <a href='./producto?ref=$Producto[0]'>
                                           <button type='button' class='btn btn-sm btn-block peach-gradient '  data-toggle='modal' data-target='#$Producto[1]'><b class='h6'>Ver Producto</b></button>
                                           </a>
                           
@@ -460,11 +436,11 @@
             <!--Section: Products v.3-->
       
             <!--Pagination-->
-            <!-- <nav class="d-flex justify-content-center wow fadeIn">
+            <nav class="d-flex justify-content-center wow fadeIn">
               <ul class="pagination pg-blue">
       
-                Arrow left-->
-                <!--<li class="page-item disabled">
+                <!--Arrow left-->
+                <li class="page-item disabled">
                   <a class="page-link" href="#" aria-label="Previous">
                     <span aria-hidden="true">&laquo;</span>
                     <span class="sr-only">Previous</span>
@@ -496,7 +472,7 @@
                   </a>
                 </li>
               </ul>
-            </nav> -->
+            </nav>
       
           </div>
 
@@ -546,37 +522,35 @@
             <div class="card">
               <div class="card-body">
                 <!-- Header -->
+                <form>
                 <div class="form-header  accent-1 p-2" style="text-align:center;color:white;border-radius:5px;background:#929fba">
                   <h3 class="mt-2"><i class="fas fa-envelope"></i> Escribenos</h3>
                 </div>
                 <p class="dark-grey-text">Te responderemos rapidamente, trata de ser claro </p>
                 <!-- Body -->
-              <form action='./Controlador/mail.php' method='post'>
-              <div>
                 <div class="md-form">
                   <i class="fas fa-user prefix grey-text"></i>
-                  <input type="text" name="name" class="form-control" required>
+                  <input type="text" id="form-name" class="form-control">
                   <label for="form-name">Nombre </label>
                 </div>
                 <div class="md-form">
                   <i class="fas fa-envelope prefix grey-text"></i>
-                  <input type="email" name="email" class="form-control" required>
+                  <input type="text" id="form-email" class="form-control">
                   <label for="form-email">E-mail</label>
                 </div>
                 <div class="md-form">
                   <i class="fas fa-tag prefix grey-text"></i>
-                  <input type="text" name="Subject" class="form-control" required>
+                  <input type="text" id="form-Subject" class="form-control">
                   <label for="form-Subject">Asunto</label>
                 </div>
                 <div class="md-form">
                   <i class="fas fa-pencil-alt prefix grey-text"></i>
-                  <textarea name="text" class="form-control md-textarea" rows="3" required></textarea>
+                  <textarea id="form-text" class="form-control md-textarea" rows="3"></textarea>
                   <label for="form-text">Escribe tu mensaje</label>
                 </div>
                 <div class="text-center">
-                  <button type="submit" class="btn " style="color:white;background:#929fba">Enviar</button>
+                  <button class="btn " style="color:white;background:#929fba">Enviar</button>
                 </div>
-              </div>
               </form>
               </div>
             </div>

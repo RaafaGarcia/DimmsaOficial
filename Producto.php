@@ -90,18 +90,21 @@
         $rsDetalle = mysqli_query($con, $queryDetalle) or die ("Error de consulta");         
               while ($Detalle = mysqli_fetch_array($rsDetalle)) {
                 
-                echo '<div class="col-md-6 mb-4">';
-                echo '';
-                echo "<img src='./Media/Productos/$Detalle[2]' style='border-radius:10px;width: 950px; height: 700px;' class='img-fluid' alt=''> ";
-                echo '';
+                echo '<div class="col-md-8 mb-4">';
+                echo '';?>
+                <a id="modalActivate"  class="" data-toggle="modal" data-target="#exampleModalPreview">
+                <?php
+                echo "<img src='./Media/Productos/$Detalle[2]' style='border-radius:10px;width: 100%;' class='img-fluid' alt=''> ";
+                echo '</a>';
                 echo '</div>';
                 echo '<!--Grid column-->';
                 echo '';
                 echo '<!--Grid column-->';
-                echo '<div class="col-md-6 mb-4">';
+                echo '<div class="col-md-4 mb-4">';
 
                 echo '<form class="text-left  " action="#!">';
-                echo "<div class='peach-gradient pt-3 pb-1  text-center' style='border-radius:10px'><p class='h4 mb-4'>$Detalle[1]</p></div>";
+                echo "<div class='peach-gradient  pb-1 pt-1 text-center' style='border-radius:10px'><p class='h4 mb-1'>$Detalle[1]</p></div>";
+                
                 echo '';
                 echo '';
                 echo '<p class="h5 p-1 m-1" style="color:green">Disponible </p>';
@@ -113,8 +116,12 @@
                 echo '';
                 echo '<p class="h6 p-1 m-1">Referencia: </p>';
                 echo '';
-                echo "<img class='img-responsive center-block img-thumbnail m-1'  src='./Media/Referencias/$Detalle[3]' style='width: 250px; height: 180px;'>";
-                echo '<hr>';
+                ?>
+                <a id="modalAc" type="" class="" data-toggle="modal" data-target="#examp">
+                <?php
+                echo "<img class='img-responsive center-block img-thumbnail m-1'  src='./Media/Referencias/$Detalle[3]' style='width: 250px; '>";
+                
+                echo '</a><hr>';
                 echo '<p class="h6 p-1 m-1">Materiales: </p>';
                 echo '';
                 echo "<p class='text-left p-3 m-1'>$Detalle[4]</p>";
@@ -132,7 +139,49 @@
                 echo '';
                 echo '</form>';
                 echo '</div>';
+                ?>
+               
+                <!-- Modal -->
+                <div class="modal fade top" id="exampleModalPreview" tabindex="-1" role="dialog" aria-labelledby="exampleModalPreviewLabel" aria-hidden="true">
+                  <div class="modal-dialog modal-fluid" role="document" style="">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalPreviewLabel"><?php echo"$Detalle[1]";?></h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                      <?php echo"<img src='./Media/Productos/$Detalle[2]' style='border-radius:10px;max-width:100%' class='img-fluid' alt=''> ";?>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        
+                      </div>
+                    </div>
+                  </div>
+                </div>
 
+                <div class="modal fade top" id="examp" tabindex="-1" role="dialog" aria-labelledby="referenciaModal" aria-hidden="true">
+                  <div class="modal-dialog modal-lg" role="document" style="">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="referenciaModal"><?php echo"$Detalle[1]";?></h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                      <?php echo"<img src='./Media/Referencias/$Detalle[3]' style='border-radius:10px;max-width:100%' class='img-fluid' alt=''> ";?>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        
+                      </div>
+                    </div>
+                  </div>
+                </div>
+<?php
               }
             ?>
         <!--Grid column-->
@@ -207,9 +256,25 @@
   <!-- Initializations -->
   <script type="text/javascript">
     // Animations initialization
-    new WOW().init();
+    // new WOW().init();
 
   </script>
+  <script type="text/javascript">
+
+  function ModalImage(id) {
+    if( $('#check'+id).prop('checked') ) {
+      $( "#only"+id ).val('0');
+      console.log(1)
+    }else{
+      $( "#only"+id ).val('1');
+      console.log(0)
+    }
+  
+
+  }
+
+</script>
 </body>
 
 </html>
+
