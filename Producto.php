@@ -2,8 +2,8 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-  <meta charset="utf-8">
+<head><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <?php
@@ -119,7 +119,7 @@
                 ?>
                 <a id="modalAc" type="" class="" data-toggle="modal" data-target="#examp">
                 <?php
-                echo "<img class='img-responsive center-block img-thumbnail m-1'  src='./Media/Referencias/$Detalle[3]' style='width: 250px; '>";
+                echo "<img class='img-responsive center-block img-thumbnail m-1'  src='./Media/Referencias/$Detalle[3]' style='width: 130px; '>";
                 
                 echo '</a><hr>';
                 echo '<p class="h6 p-1 m-1">Materiales: </p>';
@@ -155,7 +155,7 @@
                       <?php echo"<img src='./Media/Productos/$Detalle[2]' style='border-radius:10px;max-width:100%' class='img-fluid' alt=''> ";?>
                       </div>
                       <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                         
                       </div>
                     </div>
@@ -166,16 +166,18 @@
                   <div class="modal-dialog modal-lg" role="document" style="">
                     <div class="modal-content">
                       <div class="modal-header">
-                        <h5 class="modal-title" id="referenciaModal"><?php echo"$Detalle[1]";?></h5>
+                        <h5 class="modal-title" id="referenciaModal"><?php echo"$Detalle[1]"." Referencia";?></h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                           <span aria-hidden="true">&times;</span>
                         </button>
                       </div>
                       <div class="modal-body">
-                      <?php echo"<img src='./Media/Referencias/$Detalle[3]' style='border-radius:10px;max-width:100%' class='img-fluid' alt=''> ";?>
+                          <div class="text-center">
+                              <?php echo"<img src='./Media/Referencias/$Detalle[3]' style='border-radius:10px;max-width:100%' class='img-fluid img-thumbnail ' alt=''> ";?>
+                          </div>
                       </div>
                       <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                         
                       </div>
                     </div>

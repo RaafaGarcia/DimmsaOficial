@@ -10,7 +10,7 @@ $Medidas = $_POST['Medidas'];
 $Categoria = $_POST['Categoria'];
 
 	if (empty($_FILES["Imagen"]["name"])) {
-       	$Imagen = "Dimmsa.png";
+       	$Imagen = "no-image.jpg";
 
       }else{   
      $nombreArchivoImagen = $_FILES["Imagen"]["name"];

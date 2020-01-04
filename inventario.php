@@ -2,8 +2,8 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-  <meta charset="utf-8">
+<head><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <title>DIMMSA ADMIN</title>
@@ -532,6 +532,13 @@ $('.openBtn').on('click',function(){
     $('.getPr').load('./Controlador/getContent.php?id='+id_button ,function(){
         $('#editarModal').modal({show:true});
     });
+});
+</script>
+<script>
+// Add the following code if you want the name of the file appear on select
+$(".custom-file-input").on("change", function() {
+  var fileName = $(this).val().split("\\").pop();
+  $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
 });
 </script>
 </body>

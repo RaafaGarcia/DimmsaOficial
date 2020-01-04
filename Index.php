@@ -2,8 +2,8 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-  <meta charset="utf-8">
+<head><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <link rel="icon" type="image/png" href="favicon.png">
@@ -45,19 +45,6 @@
         margin-top:40px;
         
       }
-      /* .view {
-      
-      margin:0px;
-      margin-top:100px;
-      padding:0px;
-      width: 100%;
-
-      vertical-align: middle;
-      background-size:300px 100px;
-      background-position:50% ;
-      height: 35vh;
-      
-    } */
     }
 
     @media (min-width: 800px) and (max-width: 850px) {
@@ -463,7 +450,7 @@
             <!-- <nav class="d-flex justify-content-center wow fadeIn">
               <ul class="pagination pg-blue">
       
-                Arrow left-->
+                <!--Arrow left-->
                 <!--<li class="page-item disabled">
                   <a class="page-link" href="#" aria-label="Previous">
                     <span aria-hidden="true">&laquo;</span>

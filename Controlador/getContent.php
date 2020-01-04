@@ -19,7 +19,14 @@
             </div>
                            
             <!-- imagen -->
+            <div class='row'>
+            <div class='col-lg-2'>
+            <h6 style='text-align:left'>Actual:</h6>
             <input name='ImgOld' type='hidden' class='form-control'  value='".$Producto[2]."' required>
+            <img src='./Media/Productos/$Producto[2]' style='border-radius:5px; width: 130px;' class='img-fluid' alt='Imagen Actual'>
+            </div>
+            <div class='col-lg-10'>
+            <h6 style='text-align:left'>Nueva: (Si no cambia dejar en blanco)</h6>
             <div class='p-1 mb-2' style='text-align:left;background:whitesmoke;border-radius:5px' >
               <label for=''>Imagen</label>
               <div class='custom-file'>
@@ -27,9 +34,18 @@
                 <label class='custom-file-label' for='inputGroupFile01'>Seleccionar</label>
               </div>
             </div>
+            </div>
+            </div>
                                   
             <!-- referencia -->
+            <div class='row'>
+            <div class='col-lg-2'>
+            <h6 style='text-align:left'>Actual:</h6>
             <input name='RefOld' type='hidden' class='form-control'  value='".$Producto[3]."' required>
+            <img src='./Media/Referencias/$Producto[3]' style='border-radius:5px; width: 130px;' class='img-fluid img-thumbnail ' alt='Referencia Actual'>
+            </div>
+            <div class='col-lg-10'>
+            <h6 style='text-align:left'>Nueva: (Si no cambia dejar en blanco)</h6>
             <div class='p-1' style='text-align:left;background:whitesmoke;border-radius:5px' >
               <label for=''>Referencia</label>
               <div class='custom-file'>
@@ -37,6 +53,8 @@
                 aria-describedby='inputGroupFileAddon01'>
                 <label class='custom-file-label' for='inputGroupFile01'>Seleccionar</label>
               </div>
+            </div>
+            </div>
             </div>
 
             <!-- materiales -->
@@ -76,7 +94,14 @@
             <br>
                                          
             <button class='btn btn-success btn-block' type='submit'>Guardar</button>
-          </form>";
+          </form>
+          <script>
+// Add the following code if you want the name of the file appear on select
+$('.custom-file-input').on('change', function() {
+  var fileName = $(this).val().split('\\').pop();
+  $(this).siblings('.custom-file-label').addClass('selected').html(fileName);
+});
+</script>";
 
 // close connection
 mysqli_close($con);

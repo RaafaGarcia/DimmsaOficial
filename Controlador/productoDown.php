@@ -10,7 +10,7 @@ $Ref = $_POST['Ref'];
       $sql = "DELETE FROM producto WHERE ID_PRODUCTO = ".$Id;
     	if(mysqli_query($con, $sql)){
 
-        if ($Img == "Dimmsa.png") {
+        if ($Img == "no-image.jpg") {
  
 }else{
   unlink("../Media/Productos/" . $Img);
