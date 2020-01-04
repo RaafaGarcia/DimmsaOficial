@@ -1,9 +1,20 @@
 <?php  
 
+//PRODUCCION
+
 $host="localhost";
-$user="root";
-$password="";
-$db="GESTORDIMMSA";
+$user="mueblesd_viisoft";
+$password="viisoft";
+$db="mueblesd_gestordimmsa";
+
+//LOCAL
+
+// $host="localhost";
+// $user="root";
+// $password="";
+// $db="GESTORDIMMSA";
+
+
 $con = new mysqli($host,$user,$password,$db) or die ("No se ha podido conectar al servidor de Base de datos");
 
 
