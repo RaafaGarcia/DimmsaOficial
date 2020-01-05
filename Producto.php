@@ -124,15 +124,15 @@
                 echo '</a><hr>';
                 echo '<p class="h6 p-1 m-1">Materiales: </p>';
                 echo '';
-                echo "<p class='text-left p-3 m-1'>$Detalle[4]</p>";
+                echo "<p class='text-left p-3 m-1'>".nl2br( $Detalle[4] )."</p>";
                 echo '<hr>';
                 echo '<p class="h6 p-1 m-1">Colores: </p>';
                 echo '';
-                echo "<p class='text-left p-3 m-1'>$Detalle[5]</p>";
+                echo "<p class='text-left p-3 m-1'>".nl2br( $Detalle[5] )."</p>";
                 echo '<hr>';
                 echo '<p class="h6 p-1 m-1">Medidas: </p>';
                 echo '';
-                echo "<p class='text-left p-3 m-1'>$Detalle[6]</p>";
+                echo "<p class='text-left p-3 m-1'>".nl2br( $Detalle[6] )."</p>";
                 echo '<a href="./#contacto">';
                 echo '<span class="btn btn-info btn-block" > <i class="fas fa-envelope fa-lg"> </i> <span class="h6"> Contactanos</span></span>';
                 echo '</a>';
