@@ -7,7 +7,7 @@ $id = $_POST['Carrusel'];
 $img = $_POST['Borrar'];
 $nombreArchivo = "no-image.jpg";
 
-    $sql = "INSERT INTO carrusel values(".$id.",'". $img ."',$ordenar,$mostrar) ON DUPLICATE KEY UPDATE IMG_REFERENCIA ='". $nombreArchivo ."',ordenar = 0 ,mostrar=1;";
+    $sql = "INSERT INTO carrusel values(".$id.",'". $img ."',$ordenar,$mostrar) ON DUPLICATE KEY UPDATE IMG_REFERENCIA ='". $nombreArchivo ."',ordenar = 10 ,mostrar=1;";
     	if(mysqli_query($con, $sql)){
         unlink("../Media/Carrusel/" . $img);
         header("Location: ../inventario.php");

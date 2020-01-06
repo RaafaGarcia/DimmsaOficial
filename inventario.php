@@ -129,11 +129,14 @@
                               <td style='min-width: 200px;'>
                               <a>".$Carrusel[1]."</a>
                               <div class='custom-file'>
-                                  <input type='file' class='custom-file-input' id='customFileLang' lang='es' name='file-input' required='yes'>
+                                  <input type='file' class='custom-file-input' id='customFileLang' lang='es' name='file-input' >
                                   <label class='custom-file-label' for='customFileLang'>Seleccionar</label>
                               </div>
                               </td>
-                              <td><input type='number'  style='width: 100px' class='form-control' name='newOrdenar' value='$Carrusel[2]'>
+                              <td>
+                              <a>1 al 10</a>
+                              <input type='number'  style='width: 100px' class='form-control' name='newOrdenar' value='$Carrusel[2]'>
+                              <input type='hidden'  name='actual' value='$Carrusel[1]'>
                               <input type='hidden'  name='ordenar' value='$Carrusel[2]'>
                               </td>
                                 <td  style='width: 140px;'>";
@@ -144,12 +147,12 @@
                                   .toggle.ios .toggle-handle { border-radius: 20px; }
                                 </style>
                                   
-                                <input type="checkbox" value="0"   onchange="<?php echo"chan($countnew)";?>" id="<?php echo"check$countnew";?>"  data-toggle="toggle"  data-style="ios"   data-size="small" data-on='<i class="fa fa-eye-slash fa-lg"></i> Ocultar' data-off='<i class="fa fa-eye fa-lg"></i> Mostrar' data-onstyle="info" data-offstyle="default" checked>
+                                <input type="checkbox" value="0"   onchange="<?php echo"chan($countnew)";?>" id="<?php echo"check$countnew";?>"  data-toggle="toggle"  data-style="ios"   data-size="small" data-on='<i class="fa fa-eye fa-lg"></i> Visible' data-off='<i class="fa fa-eye-slash fa-lg"></i> Oculto' data-onstyle="info" data-offstyle="default" checked>
                                 
                                
                                 
                                 <?php }else{ ?>
-                                  <input type="checkbox" value="0"   onchange="<?php echo"chan($countnew)";?>" id="<?php echo"check$countnew";?>"  data-toggle="toggle"  data-style="ios"   data-size="small" data-on='<i class="fa fa-eye-slash fa-lg"></i> Ocultar' data-off='<i class="fa fa-eye fa-lg"></i> Mostrar' data-onstyle="info" data-offstyle="default" >
+                                  <input type="checkbox" value="0"   onchange="<?php echo"chan($countnew)";?>" id="<?php echo"check$countnew";?>"  data-toggle="toggle"  data-style="ios"   data-size="small" data-on='<i class="fa fa-eye fa-lg"></i> Visible' data-off='<i class="fa fa-eye-slash fa-lg"></i> Oculto' data-onstyle="info" data-offstyle="default" >
                                   
                                   
                               <?php
@@ -166,16 +169,7 @@
                                 <?php 
                                 echo" 
                                 </form>
-                                  <form id='uploadimage' action='./Controlador/carruselDown.php' method='post' enctype='multipart/form-data'>
-                                  <input type='hidden' name='mostrar'  value='".$Carrusel[3]."'>
-                                  <input type='hidden' name='Carrusel' value='".$Carrusel[0]."'>
-                                  <input type='hidden'  name='ordenar' value='$Carrusel[2]'>
-                                  <input type='hidden' name='Borrar' value='$Carrusel[1]'>";?>
-                                  <!-- <input type='submit'  value='Borrar' class='btn btn-outline-danger btn-block'> -->
-                                  <button  type="submit" value='Borrar' class="btn btn-red btn-sm btn-block mb-1"><i class="fas fa-trash fa-lg mr-1 white-text"></i> Borrar</button>
-                                <?php 
-                                echo"
-                                  </form>
+                                  <button type='button' class='btn btn-sm btn-danger btn-block BtnCarrusel' value=".$Carrusel[0]." data-toggle='modal' data-target='#borrarCarrusel'><i class='fas fa-trash fa-lg mr-1 white-text'></i> Borrar</button>
                                 </td>
                               </tr> "; $countnew +=1;}?>
                             <!-- <tr>
@@ -220,16 +214,13 @@
                                 $rsCategoria = mysqli_query($con, $queryCategoria) or die ("Error de consulta");
                                 $count=1;    
                                   while ($Categoria = mysqli_fetch_array($rsCategoria)) {
+                                    $cat =str_replace(" ", "-", $Categoria[0]);
                                     echo"
                                     <tr>
                                       <td>$count</td>
                                       <td>".$Categoria[0]."</td>
                                       <td style='max-width:50px'>
-                                      <form action='./Controlador/CategoriaDown.php' method='post'>
-                                        <input type='hidden' name='Eliminar' value='".$Categoria[0]."'>
-                                        <button type='submit'  value='Borrar' class='btn btn-red btn-sm btn-block mb-1'><i class='fas fa-trash fa-lg mr-1 white-text'></i>Borrar</button>
-                                        
-                                      </form>
+                                          <button type='button' class='btn btn-sm btn-danger btn-block BtnCategoria' value='".$cat."' data-toggle='modal' data-target='#borrarCategoria'><i class='fas fa-trash fa-lg mr-1 white-text'></i> Borrar</button>
                                       </td>
                                     </tr>
                                   "; $count+=1;}?>
@@ -293,13 +284,7 @@
                                       <td>
                                         <?php echo"
                                         <button type='button' class='btn btn-sm btn-success btn-block openBtn' value=".$Producto[0]." data-toggle='modal' data-target='#editarModal'><i class='fas fa-external-link fa-lg mr-1 white-text'></i> Editar</button>
-
-                                        <form action='./Controlador/productoDown.php' method='post'>
-                                        <input type='hidden' name='Img' value='".$Producto[2]."'>
-                                        <input type='hidden' name='Ref' value='".$Producto[3]."'>
-                                        	<button type='submit' name='BorrarId' value=".$Producto[0]." class='btn btn-red btn-sm btn-block mb-1'><i class='fas fa-trash fa-lg mr-1 white-text'></i> Borrar</button>
-                                        </form>
-
+                                          <button type='button' class='btn btn-sm btn-info btn-block BtnProducto' value='".$Producto[0]."' data-toggle='modal' data-target='#borrarProduct'><i class='fas fa-trash fa-lg mr-1 white-text'></i> Borrar</button>
                                         "?>
                                       </td>
                                     </tr>
@@ -459,6 +444,83 @@
     </div>
   </div>
 </div>
+
+<!-- The Modal -->
+<div class="modal fade" id="borrarCarrusel">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Borrar elemento del carrusel</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+         <div class="getCarrusel">
+           
+      </div>                  
+      </div>
+
+      <!-- Modal footer -->
+      
+
+    </div>
+  </div>
+</div>
+
+<!-- The Modal -->
+<div class="modal fade" id="borrarCategoria">
+  <div class="modal-dialog modal-md">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Borrar categoria del producto</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+         <div class="getCategoria">
+           
+      </div>                  
+      </div>
+
+      <!-- Modal footer -->
+      
+
+    </div>
+  </div>
+</div>
+
+
+<!-- The Modal -->
+<div class="modal fade" id="borrarProducto">
+  <div class="modal-dialog modal-md">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Borrar producto</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+         <div class="getProducto">
+           
+      </div>                  
+      </div>
+
+      <!-- Modal footer -->
+      
+
+    </div>
+  </div>
+</div>
+
   <!--Footer-->
   <footer class="page-footer text-center font-small mt-4 wow fadeIn">
 
@@ -527,6 +589,7 @@
   
   </script>
     <script type="text/javascript">
+    // Modal Editar Producto
 $('.openBtn').on('click',function(){
   var id_button = $(this).val();
     $('.getPr').load('./Controlador/getContent.php?id='+id_button ,function(){
@@ -534,6 +597,37 @@ $('.openBtn').on('click',function(){
     });
 });
 </script>
+
+<script type="text/javascript">
+    // Modal Borrar carrusel
+$('.BtnCarrusel').on('click',function(){
+  var id_button = $(this).val();
+    $('.getCarrusel').load('./Controlador/getCarrusel.php?id='+id_button ,function(){
+        $('#borrarCarrusel').modal({show:true});
+    });
+});
+</script>
+
+<script type="text/javascript">
+    // Modal Borrar categoria
+$('.BtnCategoria').on('click',function(){
+  var id_button = $(this).val();
+    $('.getCategoria').load('./Controlador/getCategoria.php?id='+id_button ,function(){
+        $('#borrarCategoria').modal({show:true});
+    });
+});
+</script>
+
+<script type="text/javascript">
+    // Modal Borrar categoria
+$('.BtnProducto').on('click',function(){
+  var id_button = $(this).val();
+    $('.getProducto').load('./Controlador/getProducto.php?id='+id_button ,function(){
+        $('#borrarProducto').modal({show:true});
+    });
+});
+</script>
+
 <script>
 // Add the following code if you want the name of the file appear on select
 $(".custom-file-input").on("change", function() {
