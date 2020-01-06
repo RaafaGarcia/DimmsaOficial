@@ -284,7 +284,7 @@
                                       <td>
                                         <?php echo"
                                         <button type='button' class='btn btn-sm btn-success btn-block openBtn' value=".$Producto[0]." data-toggle='modal' data-target='#editarModal'><i class='fas fa-external-link fa-lg mr-1 white-text'></i> Editar</button>
-                                          <button type='button' class='btn btn-sm btn-info btn-block BtnProducto' value='".$Producto[0]."' data-toggle='modal' data-target='#borrarProduct'><i class='fas fa-trash fa-lg mr-1 white-text'></i> Borrar</button>
+                                          <button type='button' class='btn btn-sm btn-danger btn-block BtnProducto' value='".$Producto[0]."' data-toggle='modal' data-target='#borrarProduct'><i class='fas fa-trash fa-lg mr-1 white-text'></i> Borrar</button>
                                         "?>
                                       </td>
                                     </tr>
