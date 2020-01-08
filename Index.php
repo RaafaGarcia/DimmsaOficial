@@ -181,7 +181,7 @@
             <div class="mask rgba-black-light d-flex justify-content-end align-items-end ">
               <div class="text-center white-text mx-5 wow fadeIn"  >     
                 <h1 class="mb-4">
-                  <strong>  <span class="badge badge-pill ambar-color">DIMMSA 2019</span> </strong>
+                  <strong>  <span class="badge badge-pill ambar-color">DIMMSA <?php echo date ("Y"); ?></span> </strong>
                 </h1>
               </div>
             </div>
@@ -218,34 +218,18 @@
       <!--Section: Main info-->
       <section id="empresa" class="mt-5 wow fadeIn">
         <br>
-        <br>
         <!--Grid row-->
         <div class="row mt-5">
 
           <!--Grid column-->
-          <div class="col-md-6 mb-4">
-
-            <img src="img/content/carrusel1.PNG" class="img-fluid z-depth-1-half" 
-              alt="">
-
-          </div>
-          <!--Grid column-->
-
-          <!--Grid column-->
-          <div class="col-md-6 mb-4">
+          <div class="col-md-12 mb-12">
             <!-- Main heading -->
-            <h3 class="h3 mb-3">Diseños Metalicos y de Madera S A de C V</h3>
-            <p>Fabricantes de mueble metálico y de madera, con mas de 30 años de experiencia, miembros de la Asociación de
-              Fabricantes de Muebles de Jalisco (AFAMJAL).</p>
+            <h1 class="h1 mb-3" style="text-align: center; align-content: center;">Diseños Metalicos y de Madera S. A. de C. V.</h1>
+            <h1 style="text-align: center; align-content: center;"><i class='fas fa-industry fa-lg mr-1 '></i></h1>
+            <h4>Fabricantes de mueble metálico y de madera, con mas de 30 años de experiencia, miembros de la Asociación de
+              Fabricantes de Muebles de Jalisco (AFAMJAL).</h4>
 
-            <strong>Misión</strong>
-            <p>Fabricar muebles con alta tecnología y 100% garantizados para la satisfacción de nuestros clientes.</p>
-
-            <strong>Visión</strong>
-            <p>ser proveedores de las más grandes firmas comercializadoras de muebles en el país.</p>
-            
-            <strong>Valores</strong>
-            <p>Confiabilidad, responsabilidad y ética profesional.</p>
+              
             <!-- Main heading -->
 
           
@@ -650,7 +634,7 @@
 
     <!--Copyright-->
     <div class="footer-copyright py-3">
-      © 2019 Copyright:
+      © <?php echo date ("Y"); ?> Copyright:
       <a href="https://viisoft.firebaseapp.com/" target="_blank"> ViiSoft.com </a>
     </div>
     <!--/.Copyright-->
